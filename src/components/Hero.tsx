@@ -1,17 +1,11 @@
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Phone, MessageCircle, Mail } from 'lucide-react';
 import heroImage from '@/assets/hero-painter.jpg';
 
 const Hero = () => {
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
@@ -30,13 +24,14 @@ const Hero = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button 
-            onClick={scrollToContact}
-            size="lg"
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-3"
-          >
-            Gratis Offerte Aanvragen
-          </Button>
+          <Link to="/offerte">
+            <Button 
+              size="lg"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-3"
+            >
+              Gratis Offerte Aanvragen
+            </Button>
+          </Link>
         </div>
       </div>
 

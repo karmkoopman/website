@@ -2,7 +2,7 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
 
-const Index = () => {
+const Home = () => {
   return (
     <div className="min-h-screen">
       <Header />
@@ -12,4 +12,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Home;

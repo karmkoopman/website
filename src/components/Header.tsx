@@ -1,61 +1,73 @@
 import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Paintbrush } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  const isActive = (path: string) => {
+    return location.pathname === path;
   };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
+        <Link to="/" className="flex items-center space-x-2">
           <Paintbrush className="h-8 w-8 text-primary" />
           <div>
             <h1 className="text-xl font-bold text-primary">KOOPMAN</h1>
             <p className="text-xs text-muted-foreground">Schilderwerken</p>
           </div>
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
-          <button
-            onClick={() => scrollToSection('home')}
-            className="text-foreground hover:text-primary transition-colors"
+          <Link
+            to="/"
+            className={`transition-colors ${
+              isActive('/') ? 'text-primary font-medium' : 'text-foreground hover:text-primary'
+            }`}
           >
             Home
-          </button>
-          <button
-            onClick={() => scrollToSection('over-ons')}
-            className="text-foreground hover:text-primary transition-colors"
+          </Link>
+          <Link
+            to="/over-ons"
+            className={`transition-colors ${
+              isActive('/over-ons') ? 'text-primary font-medium' : 'text-foreground hover:text-primary'
+            }`}
           >
             Over ons
-          </button>
-          <button
-            onClick={() => scrollToSection('werkzaamheden')}
-            className="text-foreground hover:text-primary transition-colors"
+          </Link>
+          <Link
+            to="/werkzaamheden"
+            className={`transition-colors ${
+              isActive('/werkzaamheden') ? 'text-primary font-medium' : 'text-foreground hover:text-primary'
+            }`}
           >
             Werkzaamheden
-          </button>
-          <button
-            onClick={() => scrollToSection('projecten')}
-            className="text-foreground hover:text-primary transition-colors"
+          </Link>
+          <Link
+            to="/projecten"
+            className={`transition-colors ${
+              isActive('/projecten') ? 'text-primary font-medium' : 'text-foreground hover:text-primary'
+            }`}
           >
             Projecten
-          </button>
-          <button
-            onClick={() => scrollToSection('contact')}
-            className="text-foreground hover:text-primary transition-colors"
+          </Link>
+          <Link
+            to="/offerte"
+            className={`transition-colors ${
+              isActive('/offerte') ? 'text-primary font-medium' : 'text-foreground hover:text-primary'
+            }`}
           >
             Offerte
-          </button>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -73,36 +85,51 @@ const Header = () => {
       {isMenuOpen && (
         <nav className="md:hidden bg-card border-t border-border">
           <div className="container mx-auto px-4 py-4 space-y-4">
-            <button
-              onClick={() => scrollToSection('home')}
-              className="block w-full text-left text-foreground hover:text-primary transition-colors"
+            <Link
+              to="/"
+              onClick={closeMenu}
+              className={`block w-full text-left transition-colors ${
+                isActive('/') ? 'text-primary font-medium' : 'text-foreground hover:text-primary'
+              }`}
             >
               Home
-            </button>
-            <button
-              onClick={() => scrollToSection('over-ons')}
-              className="block w-full text-left text-foreground hover:text-primary transition-colors"
+            </Link>
+            <Link
+              to="/over-ons"
+              onClick={closeMenu}
+              className={`block w-full text-left transition-colors ${
+                isActive('/over-ons') ? 'text-primary font-medium' : 'text-foreground hover:text-primary'
+              }`}
             >
               Over ons
-            </button>
-            <button
-              onClick={() => scrollToSection('werkzaamheden')}
-              className="block w-full text-left text-foreground hover:text-primary transition-colors"
+            </Link>
+            <Link
+              to="/werkzaamheden"
+              onClick={closeMenu}
+              className={`block w-full text-left transition-colors ${
+                isActive('/werkzaamheden') ? 'text-primary font-medium' : 'text-foreground hover:text-primary'
+              }`}
             >
               Werkzaamheden
-            </button>
-            <button
-              onClick={() => scrollToSection('projecten')}
-              className="block w-full text-left text-foreground hover:text-primary transition-colors"
+            </Link>
+            <Link
+              to="/projecten"
+              onClick={closeMenu}
+              className={`block w-full text-left transition-colors ${
+                isActive('/projecten') ? 'text-primary font-medium' : 'text-foreground hover:text-primary'
+              }`}
             >
               Projecten
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="block w-full text-left text-foreground hover:text-primary transition-colors"
+            </Link>
+            <Link
+              to="/offerte"
+              onClick={closeMenu}
+              className={`block w-full text-left transition-colors ${
+                isActive('/offerte') ? 'text-primary font-medium' : 'text-foreground hover:text-primary'
+              }`}
             >
               Offerte
-            </button>
+            </Link>
           </div>
         </nav>
       )}
