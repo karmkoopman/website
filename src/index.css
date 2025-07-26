@@ -9,19 +9,19 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Koopman Schilderwerken brand colors */
-    --background: 49 40% 89%; /* rgb(237 235 217) converted to HSL */
+    --background: 0 0% 100%; /* White background */
     --foreground: 214 15% 25%; /* rgb(54 61 73) converted to HSL */
 
-    --card: 49 40% 92%;
+    --card: 0 0% 100%; /* White cards */
     --card-foreground: 214 15% 25%;
 
-    --popover: 49 40% 95%;
+    --popover: 0 0% 100%; /* White popovers */
     --popover-foreground: 214 15% 25%;
 
     --primary: 214 15% 25%; /* Secondary color as primary */
     --primary-foreground: 49 40% 89%;
 
-    --secondary: 49 40% 89%; /* Primary brand color as secondary */
+    --secondary: 49 40% 89%; /* Keep brand cream as secondary */
     --secondary-foreground: 214 15% 25%;
 
     --muted: 49 30% 85%;
