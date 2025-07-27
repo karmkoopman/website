@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import FloatingContactButtons from '@/components/FloatingContactButtons';
 
 const NotFound = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const NotFound = () => {
           Return to Home
         </a>
       </div>
+      <FloatingContactButtons />
     </div>
   );
 };

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Paintbrush } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import logo1 from '@/assets/Logo1.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,12 +19,8 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
-          <Paintbrush className="h-8 w-8 text-primary" />
-          <div>
-            <h1 className="text-xl font-bold text-primary">KOOPMAN</h1>
-            <p className="text-xs text-muted-foreground">Schilderwerken</p>
-          </div>
+        <Link to="/" className="flex items-center">
+          <img src={logo1} alt="Koopman Schilderwerken" className="h-14 w-auto object-contain" />
         </Link>
 
         {/* Desktop Navigation */}

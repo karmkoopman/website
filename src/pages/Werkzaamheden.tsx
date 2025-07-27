@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Services from '@/components/Services';
 import Footer from '@/components/Footer';
+import FloatingContactButtons from '@/components/FloatingContactButtons';
 
 const Werkzaamheden = () => {
   return (
@@ -9,6 +10,7 @@ const Werkzaamheden = () => {
       <div className="pt-20">
         <Services />
       </div>
+      <FloatingContactButtons />
       <Footer />
     </div>
   );
