@@ -13,14 +13,14 @@ const Hero = () => {
         <div className="absolute inset-0 bg-primary/60" />
       </div>
       
-      <div className="relative z-10 container mx-auto px-4 text-center text-primary-foreground">
+      <div className="relative z-10 container mx-auto px-4 text-center text-primary-foreground mt-32">
         <p className="text-lg mb-4 opacity-90">Koopman Schilderwerken</p>
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          "Vakwerk voor<br />
-          een Eerlijke Prijs"
+        <h1 className="text-4xl md:text-6xl font-bold mb-16 leading-tight">
+          "Degelijk Werk kent<br />
+          zijn Waarde"
         </h1>
-        <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-2xl mx-auto">
-          Professioneel schilder- en glaszetwerk in Twente
+        <p className="text-xl md:text-2xl mb-20 opacity-90 max-w-2xl mx-auto">
+          Professioneel Buiten- en BinnenSchilderwerk
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

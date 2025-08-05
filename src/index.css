@@ -116,5 +116,6 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Arimo', Helvetica, Arial, sans-serif;
   }
 }
