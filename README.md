@@ -1,22 +1,26 @@
-# Welcome to your Lovable project
+# Koopman Schilderwerken Website
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/52bb9c00-227d-4bdd-9788-727c87f37985
+**Website**: Koopman Schilderwerken - Professional Painting and Glass Installation Services
+
+## About
+
+This is the official website for Koopman Schilderwerken, a professional painting and glass installation company serving the Twente region. The website showcases our services, projects, and provides contact information for potential clients.
+
+## Services Offered
+
+- **Schilder Werkzaamheden** - Professional interior and exterior painting
+- **Glaszetten** - Glass installation and replacement
+- **Houtrot Reparaties** - Wood rot repairs and restoration
+- **Timmerman Werkzaamheden** - Carpentry work
+- **Binnen Schilderwerk** - Interior painting services
 
 ## How can I edit this code?
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/52bb9c00-227d-4bdd-9788-727c87f37985) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
 **Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+If you want to work locally using your own IDE, you can clone this repo and push changes.
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
@@ -24,10 +28,10 @@ Follow these steps:
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+git clone https://github.com/karmkoopman/website.git
 
 # Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+cd website
 
 # Step 3: Install the necessary dependencies.
 npm i
@@ -60,14 +64,14 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Contact
 
-Simply open [Lovable](https://lovable.dev/projects/52bb9c00-227d-4bdd-9788-727c87f37985) and click on Share -> Publish.
+For more information about our services, please visit our website or contact us:
 
-## Can I connect a custom domain to my Lovable project?
+- **Phone**: +31 6 2604 6159
+- **Email**: info@koopman-schilderwerken.nl
+- **Location**: Twente and surrounding areas
 
-Yes, you can!
+## License
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+© 2025 Koopman Schilderwerken. All rights reserved.
