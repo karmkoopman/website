@@ -7,6 +7,7 @@ import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import emailjs from 'emailjs-com';
 
+// Deployment test - updated workflow
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
