@@ -28,10 +28,18 @@ jobs:
       - name: Install lftp
         run: sudo apt-get update && sudo apt-get install -y lftp
       
+      - name: Test connection
+        run: |
+          echo "Testing connection to ${{ secrets.SFTP_SERVER }}"
+          echo "Username: ${{ secrets.SFTP_USERNAME }}"
+          echo "Remote path: ${{ secrets.SFTP_REMOTE_PATH }}"
+      
       - name: Deploy to SFTP
         run: |
           lftp -c "
           set ssl:verify-certificate no;
+          set sftp:auto-confirm yes;
+          set sftp:connect-program 'ssh -o StrictHostKeyChecking=no';
           open -u ${{ secrets.SFTP_USERNAME }},${{ secrets.SFTP_PASSWORD }} sftp://${{ secrets.SFTP_SERVER }};
           cd ${{ secrets.SFTP_REMOTE_PATH }};
           mirror --reverse --delete --verbose ./dist/ .;
