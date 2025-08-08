@@ -25,11 +25,15 @@ jobs:
       - name: Build
         run: npm run build
       
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+      
       - name: Deploy to SFTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.SFTP_SERVER }}
-          username: ${{ secrets.SFTP_USERNAME }}
-          password: ${{ secrets.SFTP_PASSWORD }}
-          server-dir: ${{ secrets.SFTP_REMOTE_PATH }}
-          local-dir: ./dist/
+        run: |
+          lftp -c "
+          set ssl:verify-certificate no;
+          open -u ${{ secrets.SFTP_USERNAME }},${{ secrets.SFTP_PASSWORD }} sftp://${{ secrets.SFTP_SERVER }};
+          cd ${{ secrets.SFTP_REMOTE_PATH }};
+          mirror --reverse --delete --verbose ./dist/ .;
+          exit;
+          "
