@@ -135,12 +135,7 @@ const Contact = () => {
                     />
                   </div>
                   
-                  <Button 
-                    type="submit" 
-                    className="w-full" 
-                    size="lg"
-                    style={{ backgroundColor: '#91e5ff', color: 'white', border: 'none' }}
-                  >
+                  <Button type="submit" className="w-full" size="lg">
                     Offerte Aanvragen
                   </Button>
                 </form>
