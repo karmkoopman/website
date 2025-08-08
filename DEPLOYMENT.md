@@ -1,6 +1,6 @@
 # Deployment Guide
 
-This project uses GitHub Actions to automatically build and deploy the application to a web host via FTP.
+This project uses GitHub Actions to automatically build and deploy the application to a web host via SFTP.
 
 ## Setup Instructions
 
@@ -14,10 +14,10 @@ You need to configure the following secrets in your GitHub repository:
 
 #### Required Secrets:
 
-- **`FTP_SERVER`**: Your FTP server hostname (e.g., `ftp.yourdomain.com`)
-- **`FTP_USERNAME`**: Your FTP username
-- **`FTP_PASSWORD`**: Your FTP password
-- **`FTP_SERVER_DIR`**: The directory on your FTP server where files should be uploaded (e.g., `/public_html/` or `/www/`)
+- **`SFTP_SERVER`**: Your SFTP server hostname (e.g., `5018367769.ssh.w2.strato.hosting`)
+- **`SFTP_USERNAME`**: Your SFTP username (e.g., `su162101`)
+- **`SFTP_PASSWORD`**: Your SFTP password
+- **`SFTP_REMOTE_PATH`**: The directory on your SFTP server where files should be uploaded (e.g., `/public_html/`)
 
 ### 2. How to Add Secrets
 
@@ -26,35 +26,45 @@ You need to configure the following secrets in your GitHub repository:
 3. Click **New repository secret**
 4. Add each secret with the appropriate name and value
 
-### 3. Deployment Trigger
+### 3. SFTP Password Setup
+
+For Strato hosting, you'll need your SFTP password:
+
+1. **Get your SFTP password** from your Strato control panel
+2. **Make sure it's secure** and not shared publicly
+3. **This will be used as the `SFTP_PASSWORD` secret**
+
+### 4. Deployment Trigger
 
 The deployment will automatically trigger when:
 - You push to the `main` or `master` branch
 - You manually trigger the workflow from the Actions tab
 
-### 4. Build Output
+### 5. Build Output
 
 The workflow will:
 1. Install Node.js dependencies
 2. Build the Vite application (outputs to `./dist/`)
-3. Upload the built files to your FTP server
+3. Upload the built files to your SFTP server
 
-### 5. Troubleshooting
+### 6. Troubleshooting
 
 - **Build fails**: Check that all dependencies are properly listed in `package.json`
-- **FTP connection fails**: Verify your FTP credentials and server details
-- **Files not appearing**: Check the `FTP_SERVER_DIR` path is correct
+- **SFTP connection fails**: Verify your password and server details
+- **Files not appearing**: Check the `SFTP_REMOTE_PATH` path is correct
+- **Permission denied**: Ensure your SFTP password is correct
 
-### 6. Security Notes
+### 7. Security Notes
 
-- Never commit FTP credentials to your repository
-- Use strong, unique passwords for your FTP account
-- Consider using SFTP instead of FTP for better security (requires different action)
+- Never commit SFTP passwords to your repository
+- Use strong, unique passwords for your SFTP account
+- Keep your password secure and never share it
+- SFTP is more secure than FTP as it encrypts all data
 
-### 7. Customization
+### 8. Customization
 
-You can modify the workflow file (`.github/workflows/deploy.yml`) to:
+You can modify the workflow file (`.github/workflows/sftp-deploy.yml`) to:
 - Change the trigger branches
 - Add additional build steps
-- Modify the exclude patterns
+- Modify the deployment settings
 - Change the Node.js version 
