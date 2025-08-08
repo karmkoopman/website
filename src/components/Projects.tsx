@@ -29,7 +29,7 @@ const Projects = () => {
     <section id="projecten" className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground pr-20 lg:pr-0">
             Projecten
           </h2>
           
@@ -46,13 +46,13 @@ const Projects = () => {
                     <div className="absolute inset-0 bg-primary/20" />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-card-foreground mb-2">
+                    <h3 className="text-xl font-bold text-card-foreground mb-2 pr-20 lg:pr-0">
                       {project.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground mb-3 font-medium">
+                    <p className="text-sm text-muted-foreground mb-3 font-medium pr-20 lg:pr-0">
                       {project.location}
                     </p>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed pr-20 lg:pr-0">
                       {project.description}
                     </p>
                   </div>

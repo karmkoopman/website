@@ -49,14 +49,14 @@ const Header = () => {
           >
             Werkzaamheden
           </Link>
-          <Link
+          {/* <Link
             to="/projecten"
             className={`transition-colors ${
               isActive('/projecten') ? 'text-primary font-medium' : 'text-foreground hover:text-primary'
             }`}
           >
             Projecten
-          </Link>
+          </Link> */}
           <Link
             to="/offerte"
             className={`transition-colors ${
@@ -109,7 +109,7 @@ const Header = () => {
             >
               Werkzaamheden
             </Link>
-            <Link
+            {/* <Link
               to="/projecten"
               onClick={closeMenu}
               className={`block w-full text-left transition-colors ${
@@ -117,7 +117,7 @@ const Header = () => {
               }`}
             >
               Projecten
-            </Link>
+            </Link> */}
             <Link
               to="/offerte"
               onClick={closeMenu}

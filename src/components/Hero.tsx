@@ -27,7 +27,8 @@ const Hero = () => {
           <Link to="/offerte">
             <Button 
               size="lg"
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-8 py-3"
+              className="px-8 py-3"
+              style={{ backgroundColor: '#91e5ff', color: 'white' }}
             >
               Gratis Offerte Aanvragen
             </Button>
@@ -38,22 +39,24 @@ const Hero = () => {
       {/* Contact Icons */}
       <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-40 flex flex-col gap-4">
         <a
-          href="tel:+31612345678"
-          className="bg-primary text-primary-foreground p-3 rounded-full shadow-lg hover:scale-110 transition-transform"
+          href="tel:+31626046159"
+          className="p-3 rounded-full shadow-lg hover:scale-110 transition-transform"
+          style={{ backgroundColor: '#91e5ff', color: 'white' }}
           aria-label="Bel ons"
         >
           <Phone className="h-6 w-6" />
         </a>
         <a
-          href="https://wa.me/31612345678"
+          href="https://wa.me/31626046159"
           className="bg-green-600 text-white p-3 rounded-full shadow-lg hover:scale-110 transition-transform"
           aria-label="WhatsApp"
         >
           <MessageCircle className="h-6 w-6" />
         </a>
         <a
-          href="mailto:info@koopman-schilderwerken.nl"
-          className="bg-primary text-primary-foreground p-3 rounded-full shadow-lg hover:scale-110 transition-transform"
+          href="mailto:info@koopmanschilderwerken.nl"
+          className="p-3 rounded-full shadow-lg hover:scale-110 transition-transform"
+          style={{ backgroundColor: '#91e5ff', color: 'white' }}
           aria-label="Email ons"
         >
           <Mail className="h-6 w-6" />

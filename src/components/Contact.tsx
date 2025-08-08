@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -17,11 +18,26 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Offerte aanvraag verzonden!",
-      description: "We nemen binnen 24 uur contact met u op.",
-    });
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    emailjs.send(
+      'service_gtoqyea', // <-- Replace with your EmailJS service ID
+      'template_e4i87n3', // <-- Replace with your EmailJS template ID
+      formData,
+      '_uZyWbQh0MyDT-141' // <-- Replace with your EmailJS public key
+    ).then(
+      (result) => {
+        toast({
+          title: "Offerte aanvraag verzonden!",
+          description: "We nemen zo snel mogelijk contact met u op.",
+        });
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      },
+      (error) => {
+        toast({
+          title: "Er is iets misgegaan!",
+          description: "Probeer het later opnieuw of mail direct.",
+        });
+      }
+    );
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -35,20 +51,25 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-card">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-card-foreground">
-            Gratis Offerte Aanvragen
-          </h2>
+          <h1 className="text-3xl md:text-4xl font-bold text-center mb-4 text-card-foreground pr-20 lg:pr-0">
+            Advies gesprek
+          </h1>
+          
+          <p className="text-lg leading-relaxed text-card-foreground mb-12 text-center max-w-4xl mx-auto pr-20 lg:pr-0">
+            Om een vrijblijvend advies gesprek in te plannen en het opmaken van een offerte maken wij direct tijd voor u. Vul het aanvraagformulier hieronder in of bel/whatsapp ons voor het maken van een afspraak.
+          </p>
           
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <Card className="border-border shadow-lg">
               <CardHeader>
                 <CardTitle className="text-2xl text-card-foreground">
-                  Vraag uw offerte aan
+                  Aanvraag formulier
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  <input type="text" name="website" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-card-foreground mb-2">
                       Naam *
@@ -77,7 +98,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className="w-full"
-                      placeholder="uw.email@example.com"
+                      placeholder="uwnaam@emailadres.nl"
                     />
                   </div>
                   
@@ -92,13 +113,13 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full"
-                      placeholder="06-12345678"
+                      placeholder="06-26046159"
                     />
                   </div>
                   
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-card-foreground mb-2">
-                      Beschrijving van uw project *
+                      Beschrijf uw schilderproject
                     </label>
                     <Textarea
                       id="message"
@@ -108,7 +129,7 @@ const Contact = () => {
                       required
                       rows={5}
                       className="w-full"
-                      placeholder="Beschrijf uw schilder- of glaszetproject..."
+                      placeholder="Beschrijf uw schilderproject..."
                     />
                   </div>
                   
@@ -132,7 +153,7 @@ const Contact = () => {
                     <Phone className="h-6 w-6 text-primary mt-1" />
                     <div>
                       <h3 className="font-semibold text-card-foreground">Telefoon</h3>
-                      <p className="text-muted-foreground">06-12345678</p>
+                      <a href="tel:0626046159" className="text-muted-foreground hover:underline">06-26046159</a>
                       <p className="text-sm text-muted-foreground">Bereikbaar van 8:00 - 18:00</p>
                     </div>
                   </div>
@@ -141,8 +162,7 @@ const Contact = () => {
                     <Mail className="h-6 w-6 text-primary mt-1" />
                     <div>
                       <h3 className="font-semibold text-card-foreground">E-mail</h3>
-                      <p className="text-muted-foreground">info@koopman-schilderwerken.nl</p>
-                      <p className="text-sm text-muted-foreground">We reageren binnen 24 uur</p>
+                      <a href="mailto:info@koopmanschilderwerken.nl" className="text-muted-foreground hover:underline">info@koopmanschilderwerken.nl</a>
                     </div>
                   </div>
                   
@@ -151,7 +171,7 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold text-card-foreground">Werkgebied</h3>
                       <p className="text-muted-foreground">Twente en omgeving</p>
-                      <p className="text-sm text-muted-foreground">Enschede, Hengelo, Oldenzaal</p>
+                      <p className="text-sm text-muted-foreground">Enschede, Almelo, Hengelo, Oldenzaal</p>
                     </div>
                   </div>
                   
@@ -159,8 +179,7 @@ const Contact = () => {
                     <Clock className="h-6 w-6 text-primary mt-1" />
                     <div>
                       <h3 className="font-semibold text-card-foreground">Werktijden</h3>
-                      <p className="text-muted-foreground">Maandag - Vrijdag: 8:00 - 17:00</p>
-                      <p className="text-muted-foreground">Zaterdag: Op afspraak</p>
+                      <p className="text-muted-foreground">Maandag - Vrijdag: 8:00 - 18:00</p>
                     </div>
                   </div>
                 </CardContent>
@@ -172,10 +191,11 @@ const Contact = () => {
                     Waarom Koopman Schilderwerken?
                   </h3>
                   <ul className="space-y-2 text-accent-foreground">
-                    <li>✓ Gratis offerte en advies</li>
+                    <li>✓ Vrijblijvende offerte en advies</li>
                     <li>✓ Vakkundige uitvoering</li>
-                    <li>✓ Concurrerende prijzen</li>
-                    <li>✓ Jaren garantie op het werk</li>
+                    <li>✓ 8 jaar ervaring in het schildervak</li>
+                    <li>✓ Service en Garantie</li>
+                    <li>✓ Nette en schone oplevering</li>
                     <li>✓ Lokale schilder uit Twente</li>
                   </ul>
                 </CardContent>

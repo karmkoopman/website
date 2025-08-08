@@ -1,4 +1,5 @@
 import { Paintbrush, Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
+import WhatsaappIconFooter from '@/assets/WhatsaappIconFooter.png';
 
 const Footer = () => {
   return (
@@ -24,11 +25,11 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-center items-center gap-6 mb-4">
             <div className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
-              <span className="text-xs">06-12345678</span>
+              <a href="tel:0626046159" className="text-xs hover:underline">06-26046159</a>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="h-4 w-4" />
-              <span className="text-xs">info@koopman-schilderwerken.nl</span>
+              <a href="mailto:info@koopmanschilderwerken.nl" className="text-xs hover:underline">info@koopmanschilderwerken.nl</a>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
@@ -40,24 +41,33 @@ const Footer = () => {
           <div className="flex justify-center space-x-4 mb-6 mt-2">
             <a
               href="https://facebook.com/koopmanschilderwerken"
-              className="text-primary-foreground hover:text-primary-foreground/80 transition-colors"
+              className="transition-colors"
+              style={{ color: '#91e5ff' }}
               aria-label="Facebook"
             >
               <Facebook className="h-5 w-5" />
             </a>
             <a
               href="https://instagram.com/koopmanschilderwerken"
-              className="text-primary-foreground hover:text-primary-foreground/80 transition-colors"
+              className="transition-colors"
+              style={{ color: '#91e5ff' }}
               aria-label="Instagram"
             >
               <Instagram className="h-5 w-5" />
             </a>
+            <a
+              href="https://wa.me/31626046159"
+              className="text-primary-foreground hover:text-primary-foreground/80 transition-colors"
+              aria-label="WhatsApp"
+            >
+              <img src={WhatsaappIconFooter} alt="WhatsApp" className="h-5 w-5" />
+            </a>
           </div>
           <div className="border-t border-primary-foreground/20 mt-2 pt-2 text-center">
             {/* KVK/BTW text */}
-            <p className="text-[9px] opacity-80 mb-1">KVK : 12345678 &nbsp; &nbsp; BTW-Nr. : NL001234567B01</p>
+            <p className="text-[9px] opacity-80 mb-1">KVK : 97982644 &nbsp; &nbsp; BTW-Nr. : NL001234567B01</p>
             <p className="text-[6px] opacity-75">
-              © 2025 Koopman Schilderwerken. Alle rechten voorbehouden.
+              © {new Date().getFullYear()} Koopman Schilderwerken. Alle rechten voorbehouden.
             </p>
           </div>
         </div>
