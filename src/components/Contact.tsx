@@ -8,6 +8,7 @@ import { useToast } from '@/hooks/use-toast';
 import emailjs from 'emailjs-com';
 
 // Deployment test - updated workflow
+// Testing with GitHub secrets
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
