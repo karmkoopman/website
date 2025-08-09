@@ -35,7 +35,7 @@ const Projects = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <Card key={index} className="border-border shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                             <Card key={index} className="border-border shadow-[0_10px_15px_-3px_rgba(145,229,255,0.15)] overflow-hidden hover:shadow-[0_20px_25px_-5px_rgba(145,229,255,0.25)] transition-shadow">
                 <CardContent className="p-0">
                   <div className="relative">
                     <img

@@ -63,7 +63,7 @@ const Contact = () => {
           
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <Card className="border-border shadow-lg">
+            <Card className="border-border shadow-[0_10px_15px_-3px_rgba(145,229,255,0.15)]">
               <CardHeader>
                 <CardTitle className="text-2xl text-card-foreground">
                   Aanvraag formulier
@@ -135,7 +135,11 @@ const Contact = () => {
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full" size="lg">
+                  <Button
+                    type="submit"
+                    className="w-full bg-[#91e5ff] text-white hover:bg-[#7fdcff]"
+                    size="lg"
+                  >
                     Offerte Aanvragen
                   </Button>
                 </form>
@@ -144,7 +148,7 @@ const Contact = () => {
 
             {/* Contact Information */}
             <div className="space-y-8">
-              <Card className="border-border shadow-lg">
+              <Card className="border-border shadow-[0_10px_15px_-3px_rgba(145,229,255,0.15)]">
                 <CardHeader>
                   <CardTitle className="text-2xl text-card-foreground">
                     Contactgegevens
@@ -187,7 +191,7 @@ const Contact = () => {
                 </CardContent>
               </Card>
               
-              <Card className="border-border shadow-lg bg-accent">
+              <Card className="border-border shadow-[0_10px_15px_-3px_rgba(145,229,255,0.15)] bg-accent">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold text-accent-foreground mb-4">
                     Waarom Koopman Schilderwerken?

@@ -42,7 +42,7 @@ const Footer = () => {
             <a
               href="https://facebook.com/koopmanschilderwerken"
               className="transition-colors"
-              style={{ color: '#91e5ff' }}
+              style={{ color: 'white' }}
               aria-label="Facebook"
             >
               <Facebook className="h-5 w-5" />
@@ -50,17 +50,21 @@ const Footer = () => {
             <a
               href="https://instagram.com/koopmanschilderwerken"
               className="transition-colors"
-              style={{ color: '#91e5ff' }}
+              style={{ color: 'white' }}
               aria-label="Instagram"
             >
               <Instagram className="h-5 w-5" />
             </a>
             <a
               href="https://wa.me/31626046159"
-              className="text-primary-foreground hover:text-primary-foreground/80 transition-colors"
+              className="text-white hover:text-white/80 transition-colors"
               aria-label="WhatsApp"
             >
-              <img src={WhatsaappIconFooter} alt="WhatsApp" className="h-5 w-5" />
+              <img 
+                src={WhatsaappIconFooter} 
+                alt="WhatsApp" 
+                className="h-5 w-5 brightness-0 invert" 
+              />
             </a>
           </div>
           <div className="border-t border-primary-foreground/20 mt-2 pt-2 text-center">

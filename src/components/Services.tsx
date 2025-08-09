@@ -54,7 +54,7 @@ const Services = () => {
           
           <div className="space-y-16">
             {services.map((service, index) => (
-              <Card key={index} className="border-border shadow-lg overflow-hidden">
+              <Card key={index} className="border-border shadow-[0_10px_15px_-3px_rgba(145,229,255,0.15)] overflow-hidden">
                 <CardContent className="p-0">
                   <div className={`grid md:grid-cols-2 gap-0 ${index % 2 === 1 ? 'md:grid-flow-col-dense' : ''}`}>
                     <div className="p-8 md:p-12 flex flex-col justify-center">
