@@ -9,14 +9,15 @@ import schilderIcon from '@/assets/schilder.png';
 import houtrotIcon from '@/assets/houtrot.png';
 import timmermanIcon from '@/assets/Timmerman.png';
 import reparatiesIcon from '@/assets/Reparaties.png';
+import image2 from '@/assets/2.jpg';
 
 const Services = () => {
   const services = [
     {
       icon: <img src={schilderIcon} alt="Schilder" className="h-12 w-12 object-contain" />,
       title: "Schilder Werkzaamheden",
-      description: "Professioneel binnen- en buitenschilderwerk voor een prachtige uitstraling. Door de vakbekwaamheid wordt kwaliteit geleverd en zorgen voor een duurzaam resultaat. Van het schilderen van muren en plafonds tot het beschermen van houtwerk en gevels, wij bieden een complete service. Met oog voor detail en gebruik van hoogwaardige verfproducten creëren we een stijlvolle en verzorgde woon- of werkomgeving.",
-      image: paintedInterior
+      description: "Professioneel binnen- en buitenschilderwerk voor een prachtige uitstraling. Voor vakkundig en duurzaam uitgevoerd schilderwerk bent u bij ons aan het goede adres. Buiten schilderwerk heeft aandacht nodig, daarom zorgen wij ervoor dat alle gebreken in uw deuren en kozijnen worden verholpen voordat er geschilderd wordt. En natuurlijk krijgt u altijd garantie op de geleverde diensten. Maar ook binnenschilderwerk verdiend zijn aandacht, de juiste kleuren en een strakke afwerking zorgen voor een schitterend eindresultaat. Uiteraard maken wij uitsluitend gebruik van professionele verfproducten.",
+      image: image2
     },
     {
       icon: <img src={houtrotIcon} alt="Houtrot" className="h-12 w-12 object-contain" />,
