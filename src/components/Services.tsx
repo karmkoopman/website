@@ -10,6 +10,7 @@ import houtrotIcon from '@/assets/houtrot.png';
 import timmermanIcon from '@/assets/Timmerman.png';
 import reparatiesIcon from '@/assets/Reparaties.png';
 import image2 from '@/assets/2.jpg';
+import houtrotImage from '@/assets/houtrot.jpg';
 
 const Services = () => {
   const services = [
@@ -23,7 +24,7 @@ const Services = () => {
       icon: <img src={houtrotIcon} alt="Houtrot" className="h-12 w-12 object-contain" />,
       title: "Houtrot Reparaties",
       description: "Effectieve houtrotreparaties voor behoud van uw houten constructies. Wij herstellen en vervangen aangetast hout met duurzame materialen en behandelingen. Door preventieve maatregelen en vakkundige reparaties zorgen we ervoor dat uw houtwerk weer jarenlang meegaat. Vertrouw op onze expertise voor het behoud van de structurele integriteit en schoonheid van uw houten elementen.",
-      image: woodRepair
+      image: houtrotImage
     },
     {
       icon: <img src={glasIcon} alt="Glas" className="h-12 w-12 object-contain" />,
@@ -73,7 +74,7 @@ const Services = () => {
                       <img
                         src={service.image}
                         alt={service.title}
-                        className="w-full h-64 md:h-full object-cover"
+                        className="w-full h-64 md:h-full object-contain"
                       />
                     </div>
                   </div>
