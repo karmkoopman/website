@@ -1,3 +1,4 @@
+// Services component - displays all available services with descriptions and images
 import { Card, CardContent } from '@/components/ui/card';
 import glassWork from '@/assets/glass-work.jpg';
 import paintedInterior from '@/assets/painted-interior.jpg';
