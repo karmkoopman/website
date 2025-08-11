@@ -1,5 +1,4 @@
-import { Paintbrush, Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
-import WhatsaappIconFooter from '@/assets/WhatsaappIconFooter.png';
+import { Paintbrush, Phone, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -37,36 +36,6 @@ const Footer = () => {
             </div>
           </div>
           
-          {/* Social Media Icons */}
-          <div className="flex justify-center space-x-4 mb-6 mt-2">
-            <a
-              href="https://facebook.com/koopmanschilderwerken"
-              className="transition-colors"
-              style={{ color: 'white' }}
-              aria-label="Facebook"
-            >
-              <Facebook className="h-5 w-5" />
-            </a>
-            <a
-              href="https://instagram.com/koopmanschilderwerken"
-              className="transition-colors"
-              style={{ color: 'white' }}
-              aria-label="Instagram"
-            >
-              <Instagram className="h-5 w-5" />
-            </a>
-            <a
-              href="https://wa.me/31626046159"
-              className="text-white hover:text-white/80 transition-colors"
-              aria-label="WhatsApp"
-            >
-              <img 
-                src={WhatsaappIconFooter} 
-                alt="WhatsApp" 
-                className="h-5 w-5 brightness-0 invert" 
-              />
-            </a>
-          </div>
           <div className="border-t border-primary-foreground/20 mt-2 pt-2 text-center">
             {/* KVK/BTW text */}
             <p className="text-[9px] opacity-80 mb-1">KVK : 97982644 &nbsp; &nbsp; BTW-Nr. : NL001234567B01</p>
