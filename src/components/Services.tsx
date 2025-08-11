@@ -11,6 +11,9 @@ import timmermanIcon from '@/assets/Timmerman.png';
 import reparatiesIcon from '@/assets/Reparaties.png';
 import image2 from '@/assets/2.jpg';
 import houtrotImage from '@/assets/houtrot.jpg';
+import glaszettenImage from '@/assets/glaszetten.jpg';
+import boeideelImage from '@/assets/boeideel.jpg';
+import stucwerkImage from '@/assets/stucwerk en spacwerk.jpg';
 
 const Services = () => {
   const services = [
@@ -30,19 +33,19 @@ const Services = () => {
       icon: <img src={glasIcon} alt="Glas" className="h-12 w-12 object-contain" />,
       title: "Glaszetten",
       description: "Ook voor het zetten van glas bent u aan het goede adres bij Koopman Schilderwerken. Of het nu gaat om het vervangen van enkelglas door energiebesparend dubbelglas of het plaatsen van veiligheidsglas of figuurglas, wij staan voor u klaar. Met onze ervaring en oog voor detail creëren we een comfortabele en stijlvolle leefomgeving.",
-      image: glassWork
+      image: glaszettenImage
     },
     {
       icon: <img src={timmermanIcon} alt="Timmerman" className="h-12 w-12 object-contain" />,
       title: "Timmerman Werkzaamheden",
       description: "Vakkundige timmerwerkzaamheden voor al uw houtwerk en constructies. Wij verzorgen het maken en repareren van kozijnen, deuren, trappen en andere houten elementen. Met onze expertise in houtbewerking en oog voor detail zorgen we voor duurzame en stijlvolle oplossingen. Van kleine reparaties tot complete houtwerkprojecten, wij staan voor u klaar.",
-      image: BinnenSchilderwerk
+      image: boeideelImage
     },
     {
       icon: <img src={reparatiesIcon} alt="Reparaties" className="h-12 w-12 object-contain" />,
       title: "Binnen Schilderwerk",
       description: "Professioneel binnenschilderwerk voor een frisse en verzorgde uitstraling. Wij schilderen muren, plafonds, kozijnen en andere binnenoppervlakken met zorgvuldige aandacht voor detail. Gebruik van hoogwaardige verfproducten en moderne technieken zorgen voor een duurzaam en mooi resultaat. Van complete woningen tot specifieke ruimtes, wij maken uw interieur weer als nieuw.",
-      image: Glaszetten
+      image: stucwerkImage
     }
   ];
 
