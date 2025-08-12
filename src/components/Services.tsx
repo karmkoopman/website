@@ -34,13 +34,13 @@ const Services = () => {
     {
       icon: <img src={timmermanIcon} alt="Timmerman" className="h-12 w-12 object-contain" />,
       title: "Timmerwerkzaamheden",
-      description: "Vakkundige timmerwerkzaamheden voor al uw houtwerk en constructies. Wij verzorgen het maken en repareren van kozijnen, deuren, trappen en andere houten elementen. Met onze expertise in houtbewerking en oog voor detail zorgen we voor duurzame en stijlvolle oplossingen. Van kleine reparaties tot complete houtwerkprojecten, wij staan voor u klaar.",
+      description: "Of het nu gaat om het repareren of geheel vervangen van boeidelen, kozijnreparaties of het bijschaven van een deur zodat deze weer mooi sluit, wij zijn u hiermee graag van dienst. Als het gaat om andere kleine timmerdiensten is er heel veel mogelijk, zo hebben wij al van dienst kunnen zijn met het leggen van een vloer tot het ophangen van de gordijnen. Vraag gerust naar de mogelijkheden.",
       image: boeideelImage
     },
     {
       icon: <img src={reparatiesIcon} alt="Reparaties" className="h-12 w-12 object-contain" />,
-      title: "Binnen Schilderwerk",
-      description: "Professioneel binnenschilderwerk voor een frisse en verzorgde uitstraling. Wij schilderen muren, plafonds, kozijnen en andere binnenoppervlakken met zorgvuldige aandacht voor detail. Gebruik van hoogwaardige verfproducten en moderne technieken zorgen voor een duurzaam en mooi resultaat. Van complete woningen tot specifieke ruimtes, wij maken uw interieur weer als nieuw.",
+      title: "Reparatiewerk",
+      description: "Stuc- of pleisterwerk beschadigd? Dat is zonde en blijf je zien als je er zomaar overheen schilderd. Natuurlijk zijn wij ervaren in het zorgvuldig repareren van vele soorten pleisterwerk, zo ziet uw woon- of slaapkamer er weer prachtig uit na het sausen. Ook buiten zijn er soms reparaties nodig voor het behoud van langdurig mooi schilderwerk. Denk hierbij aan het repareren van een lekkende dakgoot of regenpijp of het vast zetten van een daktrim. Deze reparaties zorgen voor een goede afwatering en komen het pas geschilderde werk, maar ook uw gevels en dus uw gehele woning ten goede.",
       image: stucwerkImage
     }
   ];
