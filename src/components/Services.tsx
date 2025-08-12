@@ -34,7 +34,7 @@ const Services = () => {
     {
       icon: <img src={timmermanIcon} alt="Timmerman" className="h-12 w-12 object-contain" />,
       title: "Timmerwerkzaamheden",
-      description: "Of het nu gaat om het repareren of geheel vervangen van boeidelen, kozijnreparaties of het bijschaven van een deur zodat deze weer mooi sluit, wij zijn u hiermee graag van dienst. Als het gaat om andere kleine timmerdiensten is er heel veel mogelijk, zo hebben wij al van dienst kunnen zijn met het leggen van een vloer tot het ophangen van de gordijnen. Vraag gerust naar de mogelijkheden.",
+      description: "Of het nu gaat om het repareren of geheel vervangen van boeidelen, kozijnreparaties of het bijschaven van een deur zodat deze weer mooi sluit, wij zijn hiermee graag van dienst. Als het gaat om andere kleine timmerdiensten is er heel veel mogelijk, zo hebben wij al van dienst kunnen zijn met het leggen van een vloer tot het afmonteren van verlichting en raamdecoratie. Vraag gerust naar de mogelijkheden.",
       image: boeideelImage
     },
     {
