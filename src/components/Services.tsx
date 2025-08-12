@@ -16,7 +16,7 @@ const Services = () => {
     {
       icon: <img src={schilderIcon} alt="Schilder" className="h-12 w-12 object-contain" />,
       title: "Schilder Werkzaamheden",
-      description: "Professioneel binnen- en buitenschilderwerk voor een prachtige uitstraling. Voor vakkundig en duurzaam uitgevoerd schilderwerk bent u bij ons aan het goede adres. Buiten schilderwerk heeft aandacht nodig, daarom zorgen wij ervoor dat alle gebreken in uw deuren en kozijnen worden verholpen voordat er geschilderd wordt. En natuurlijk krijgt u altijd garantie op de geleverde diensten. Maar ook binnenschilderwerk verdiend zijn aandacht, de juiste kleuren en een strakke afwerking zorgen voor een schitterend eindresultaat. Uiteraard maken wij uitsluitend gebruik van professionele verfproducten.",
+      description: "Profestestesioneel binnen- en buitenschilderwerk voor een prachtige uitstraling. Voor vakkundig en duurzaam uitgevoerd schilderwerk bent u bij ons aan het goede adres. Buiten schilderwerk heeft aandacht nodig, daarom zorgen wij ervoor dat alle gebreken in uw deuren en kozijnen worden verholpen voordat er geschilderd wordt. En natuurlijk krijgt u altijd garantie op de geleverde diensten. Maar ook binnenschilderwerk verdiend zijn aandacht, de juiste kleuren en een strakke afwerking zorgen voor een schitterend eindresultaat. Uiteraard maken wij uitsluitend gebruik van professionele verfproducten.",
       image: image2
     },
     {
