@@ -33,7 +33,7 @@ const Services = () => {
     },
     {
       icon: <img src={timmermanIcon} alt="Timmerman" className="h-12 w-12 object-contain" />,
-      title: "Timmerman Werkzaamheden",
+      title: "Timmerwerkzaamheden",
       description: "Vakkundige timmerwerkzaamheden voor al uw houtwerk en constructies. Wij verzorgen het maken en repareren van kozijnen, deuren, trappen en andere houten elementen. Met onze expertise in houtbewerking en oog voor detail zorgen we voor duurzame en stijlvolle oplossingen. Van kleine reparaties tot complete houtwerkprojecten, wij staan voor u klaar.",
       image: boeideelImage
     },
