@@ -22,7 +22,7 @@ const Services = () => {
     {
       icon: <img src={houtrotIcon} alt="Houtrot" className="h-12 w-12 object-contain" />,
       title: "Houtrot Reparaties",
-      description: "Het repareren en het vervangen van kozijndelen is een belangrijke stap in het schilder proces. Houtrot zien wij nooit over het hoofd en maken dit altijd kenbaar bij onze klanten. In overleg gaan we over tot het duurzaam repararen van de rotte plekken. Voor het reparen wordt gebruik gemaakt van een 2 compenenten epoxy houtrotvuller en zo nodig vervange we grote delen met hardhout. Zo bent u verzekerd van een lange onderhoudsvrije periode op u pas geleverde schilderwerk.",
+      description: "Het repareren en het vervangen van kozijndelen is een belangrijke stap in het schilder proces. Houtrot zien wij nooit over het hoofd en maken dit altijd kenbaar bij onze klanten. In overleg gaan we over tot het duurzaam repararen van de rotte plekken. Voor het reparen wordt gebruik gemaakt van een 2 componenten epoxy houtrotvuller en zo nodig vervangen wij grote delen met hardhout. Zo bent u verzekerd van een lange onderhoudsvrije periode op u pas geleverde schilderwerk.",
       image: houtrotImage
     },
     {
