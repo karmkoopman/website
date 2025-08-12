@@ -16,13 +16,13 @@ const Services = () => {
     {
       icon: <img src={schilderIcon} alt="Schilder" className="h-12 w-12 object-contain" />,
       title: "Schilder Werkzaamheden",
-      description: "Profestestesioneel binnen- en buitenschilderwerk voor een prachtige uitstraling. Voor vakkundig en duurzaam uitgevoerd schilderwerk bent u bij ons aan het goede adres. Buiten schilderwerk heeft aandacht nodig, daarom zorgen wij ervoor dat alle gebreken in uw deuren en kozijnen worden verholpen voordat er geschilderd wordt. En natuurlijk krijgt u altijd garantie op de geleverde diensten. Maar ook binnenschilderwerk verdiend zijn aandacht, de juiste kleuren en een strakke afwerking zorgen voor een schitterend eindresultaat. Uiteraard maken wij uitsluitend gebruik van professionele verfproducten.",
+      description: "Professioneel binnen- en buitenschilderwerk voor een prachtige uitstraling. Voor vakkundig en duurzaam uitgevoerd schilderwerk bent u bij ons aan het goede adres. Buiten schilderwerk heeft aandacht nodig, daarom zorgen wij ervoor dat alle gebreken in uw deuren en kozijnen worden verholpen voordat er geschilderd wordt. En natuurlijk krijgt u altijd garantie op de geleverde diensten. Maar ook binnenschilderwerk verdiend zijn aandacht, de juiste kleuren en een strakke afwerking zorgen voor een schitterend eindresultaat. Uiteraard maken wij uitsluitend gebruik van professionele verfproducten.",
       image: image2
     },
     {
       icon: <img src={houtrotIcon} alt="Houtrot" className="h-12 w-12 object-contain" />,
       title: "Houtrot Reparaties",
-      description: "Effectieve houtrotreparaties voor behoud van uw houten constructies. Wij herstellen en vervangen aangetast hout met duurzame materialen en behandelingen. Door preventieve maatregelen en vakkundige reparaties zorgen we ervoor dat uw houtwerk weer jarenlang meegaat. Vertrouw op onze expertise voor het behoud van de structurele integriteit en schoonheid van uw houten elementen.",
+      description: "Het repareren en het vervangen van kozijndelen is een belangrijke stap in het schilder proces. Houtrot zien wij nooit over het hoofd en maken dit altijd kenbaar bij onze klanten. In overleg gaan we over tot het duurzaam repararen van de rotte plekken. Voor het reparen wordt gebruik gemaakt van een 2 compenenten epoxy houtrotvuller en zo nodig vervange we grote delen met hardhout. Zo bent u verzekerd van een lange onderhoudsvrije periode op u pas geleverde schilderwerk.",
       image: houtrotImage
     },
     {
