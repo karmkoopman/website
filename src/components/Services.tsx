@@ -1,10 +1,5 @@
 // Services component - displays all available services with descriptions and images
 import { Card, CardContent } from '@/components/ui/card';
-import glassWork from '@/assets/glass-work.jpg';
-import paintedInterior from '@/assets/painted-interior.jpg';
-import woodRepair from '@/assets/wood-repair.jpg';
-import Glaszetten from '@/assets/Glaszetten.jpg';
-import BinnenSchilderwerk from '@/assets/BinnenSchilderwerk.jpg';
 import glasIcon from '@/assets/glas.png';
 import schilderIcon from '@/assets/schilder.png';
 import houtrotIcon from '@/assets/houtrot.png';
