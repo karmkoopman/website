@@ -115,7 +115,7 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full"
-                      placeholder="06-26046159"
+                      placeholder="06-12345678"
                     />
                   </div>
                   
@@ -137,7 +137,7 @@ const Contact = () => {
                   
                   <Button
                     type="submit"
-                    className="w-full bg-[#91e5ff] text-white hover:bg-[#7fdcff]"
+                    className="w-full bg-[#91e5ff] text-slate-900 hover:bg-[#7fdcff]"
                     size="lg"
                   >
                     Offerte Aanvragen

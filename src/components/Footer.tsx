@@ -1,4 +1,4 @@
-import { Paintbrush, Phone, Mail, MapPin } from 'lucide-react';
+import { Paintbrush, Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -34,14 +34,41 @@ const Footer = () => {
               <MapPin className="h-4 w-4" />
               <span className="text-xs">Twente en omgeving</span>
             </div>
+            <div className="flex items-center gap-2">
+              <a
+                href="https://www.facebook.com/share/1AJpTH9fN3/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="flex items-center gap-1 text-xs hover:underline"
+              >
+                <Facebook className="h-4 w-4" /> Facebook
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <a
+                href="https://www.instagram.com/koopmanschilderwerken"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="flex items-center gap-1 text-xs hover:underline"
+              >
+                <Instagram className="h-4 w-4" /> Instagram
+              </a>
+            </div>
           </div>
           
           <div className="border-t border-primary-foreground/20 mt-2 pt-2 text-center">
             {/* KVK/BTW text */}
             <p className="text-[9px] opacity-80 mb-1">KVK : 97982644 &nbsp; &nbsp; BTW-Nr. : NL001234567B01</p>
-            <p className="text-[6px] opacity-75">
-              © {new Date().getFullYear()} Koopman Schilderwerken. Alle rechten voorbehouden.
-            </p>
+            <div className="flex flex-col items-center gap-1">
+              <p className="text-[6px] opacity-75">
+                © {new Date().getFullYear()} Koopman Schilderwerken. Alle rechten voorbehouden.
+              </p>
+              <a href="/sitemap" className="text-[7px] underline opacity-80 hover:opacity-100">
+                Sitemap
+              </a>
+            </div>
           </div>
         </div>
       </div>

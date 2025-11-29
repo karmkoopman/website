@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import Footer from '@/components/Footer';
 
 const Review = () => {
   const googleSearchUrl = 'https://www.google.com/search?client=firefox-b-d&sca_esv=07554c39a11eae0c&sxsrf=AE3TifMXxsFjGAHpjc2vved2m_IOt48BHA:1758440168351&q=koopman+schilderwerken+reviews&uds=AOm0WdE2fekQnsyfYEw8JPYozOKzJEnG8H45ZApei5mhX2CkABEJSNEZPbwG-cYh5BHNYRH8G2jZD11TvxDKshmcg6qia8xmUgXMaaOm0O9Yky5cGQjbu9TS926sSYYfT8aDIh9RPer5jb1tE5Zu6hrcOcrJx98IASGJfA7raB8Oyn0jIvFJ7So&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-EwnxJ0bH6xTqO5We3IIJhaNxU634gncE1ZWixXpjU7nYRvsgbsGm54vnc0AgXPyGcyGxWa_mp-_zToQzMIWdn3I8n1W9bT52w2-ENAfA_8MZ0XXwDg%3D%3D&sa=X&ved=2ahUKEwiUsd-MrOmPAxVB_7sIHaBRLDQQxKsJKAV6BAh1EAE&ictx=1&biw=1280&bih=607&dpr=1.5';
@@ -30,6 +31,7 @@ const Review = () => {
           </a>
         </p>
       </div>
+      <Footer />
     </div>
   );
 };

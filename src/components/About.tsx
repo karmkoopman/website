@@ -1,5 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card';
-import paintedInterior from '@/assets/painted-interior.jpg';
+import paintedInterior from '@/assets/painted-interior.webp';
 
 const About = () => {
   return (
@@ -42,7 +42,21 @@ const About = () => {
                       Bent u op zoek naar een betrouwbare schilder in Twente?
                     </p>
                     <p className="text-base text-accent-foreground mt-2">
-                      Neem dan gerust contact met ons op en ontdek hoe wij u kunnen helpen.
+                      Heeft u vragen of wilt u een vrijblijvende offerte ontvangen?{' '}
+                      <a
+                        href="/offerte"
+                        className="font-semibold underline hover:no-underline"
+                      >
+                        Gebruik dan het offerte- en contactformulier
+                      </a>{' '}
+                      of bel ons op{' '}
+                      <a
+                        href="tel:0626046159"
+                        className="font-semibold underline hover:no-underline"
+                      >
+                        06-26046159
+                      </a>
+                      .
                     </p>
                   </div>
                 </CardContent>

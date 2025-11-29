@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import paintedInterior from '@/assets/painted-interior.jpg';
-import woodRepair from '@/assets/wood-repair.jpg';
+import paintedInterior from '@/assets/painted-interior.webp';
+import woodRepair from '@/assets/wood-repair.webp';
 
 const BeforeAfterSlider = () => {
   const [sliderPosition, setSliderPosition] = useState(50);

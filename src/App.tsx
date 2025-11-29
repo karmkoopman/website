@@ -9,6 +9,13 @@ import Werkzaamheden from "./pages/Werkzaamheden";
 import Projecten from "./pages/Projecten";
 import Offerte from "./pages/Offerte";
 import Review from "./pages/Review";
+import Schilderwerk from "./pages/Schilderwerk";
+import HoutrotReparatie from "./pages/HoutrotReparatie";
+import Glaszetten from "./pages/Glaszetten";
+import Timmerwerk from "./pages/Timmerwerk";
+import Reparatiewerk from "./pages/Reparatiewerk";
+import Portfolio from "./pages/Portfolio";
+import Sitemap from "./pages/Sitemap";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,8 +31,15 @@ const App = () => (
           <Route path="/over-ons" element={<OverOns />} />
           <Route path="/werkzaamheden" element={<Werkzaamheden />} />
           <Route path="/projecten" element={<Projecten />} />
+          <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/offerte" element={<Offerte />} />
+          <Route path="/schilderwerk" element={<Schilderwerk />} />
+          <Route path="/houtrot-reparatie" element={<HoutrotReparatie />} />
+          <Route path="/glaszetten" element={<Glaszetten />} />
+          <Route path="/timmerwerk" element={<Timmerwerk />} />
+          <Route path="/reparatiewerk" element={<Reparatiewerk />} />
           <Route path="/review" element={<Review />} />
+          <Route path="/sitemap" element={<Sitemap />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
