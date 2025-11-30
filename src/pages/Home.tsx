@@ -234,8 +234,6 @@ const Home = () => {
               <div
                 key={item.title}
                 className="bg-white p-6 md:p-8 shadow-sm transition duration-200 hover:bg-[#e0f7ff] hover:shadow-lg"
-                contentEditable
-                suppressContentEditableWarning
                 data-feature-index={idx}
               >
                 <div className="flex items-center gap-3 mb-3 md:mb-4">
