@@ -19,13 +19,13 @@ const Schilderwerk = () => (
           <div className="space-y-6">
             <p className="text-slate-700">
               Buitenschilderwerk krijgt te maken met slijtage en weersinvloeden. Daarom controleren we deuren en kozijnen grondig, repareren we
-              beschadigingen en werken we in meerdere lagen op met professionele producten. Binnen zorgen we voor strakke lijnen, passend kleuradvies
+              beschadigingen en werken we in meerdere lagen op met professionele producten.               Binnen zorgen we voor strakke lijnen, passende pleister reparaties
               en een nette oplevering zonder rommel.
             </p>
             <ul className="space-y-3 text-slate-700 list-disc list-inside">
               <li>Voorbehandeling van deuren, kozijnen en gevelonderdelen</li>
               <li>Gebruik van klasse-1 verfproducten voor langdurige bescherming</li>
-              <li>Kleur- en materiaaladvies op basis van uw interieur of gevel</li>
+              <li>Houtrot en pleister reparaties voordat we aan de afwerking beginnen</li>
               <li>Strakke afwerking van plafonds, wanden, deuren en trappen</li>
             </ul>
             <div className="flex flex-col sm:flex-row gap-4">

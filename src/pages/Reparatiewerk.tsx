@@ -19,7 +19,7 @@ const Reparatiewerk = () => (
           <div className="space-y-6">
             <p className="text-slate-700">
               Wij egaliseren wanden en plafonds, repareren scheuren en zorgen ervoor dat ondergronden weer sausklaar zijn. Buiten lossen we
-              problemen aan goten, regenpijpen en daktrimmen op zodat water geen kans krijgt om schade te veroorzaken.
+              problemen aan goten, regenpijpen en loodslabben op zodat water geen kans krijgt om schade te veroorzaken.
             </p>
             <ul className="space-y-3 text-slate-700 list-disc list-inside">
               <li>Reparatie van stucwerk, pleisterlagen en gipsplaten</li>

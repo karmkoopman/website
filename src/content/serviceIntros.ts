@@ -17,7 +17,7 @@ export const serviceIntros = {
   timmerwerk: {
     title: 'Timmerwerk',
     intro:
-      'Van het vervangen van boeidelen en kozijnreparaties tot het afmonteren van interieuronderdelen: wij verzorgen het timmerwerk dat nodig is om schilderprojecten perfect af te ronden.',
+      'Van het vervangen van boeidelen en kozijnreparaties tot het monteren van raamdecoratie: wij verzorgen het timmerwerk dat nodig is om schilderprojecten helemaal af te ronden.',
   },
   reparatiewerk: {
     title: 'Reparatiewerk',

@@ -18,14 +18,12 @@ const Glaszetten = () => (
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <p className="text-slate-700">
-              We meten nauwkeurig in, verwijderen het oude glas en plaatsen direct het nieuwe glas met de juiste stel- en
-              ventilatierubbers. Dankzij ons vakmanschap sluiten ramen en deuren weer perfect aan en verbetert het comfort in huis.
+              We meten nauwkeurig in, verwijderen het oude glas en plaatsen direct het nieuwe glas om deze vervolgens af te werken met glaslatten die de duurzaamheid van het schilderwerk bevorderen. Dankzij ons glasservice verbetert het comfort in huis.
             </p>
             <ul className="space-y-3 text-slate-700 list-disc list-inside">
               <li>HR++, veiligheidsglas, figuurglas en monumentenglas</li>
-              <li>Vervanging van glaslatten en herstel van schilderwerk</li>
-              <li>Strakke afwerking met duurzame kit en flexibele aansluiting</li>
-              <li>Advies over isolatiewaardes en subsidies</li>
+              <li>Vervanging van glaslatten en herstel van kitnaden</li>
+              <li>Strakke afwerking met duurzame beglazingskit</li>
             </ul>
             <div className="flex flex-col sm:flex-row gap-4">
               <a href="/offerte" className="px-6 py-3 bg-[#91e5ff] text-slate-900 font-semibold rounded-full text-center hover:bg-[#7fdcff] transition-colors">
@@ -42,7 +40,7 @@ const Glaszetten = () => (
 
       <section className="container mx-auto px-4 max-w-6xl mt-16 grid md:grid-cols-3 gap-6">
         {[
-          'Nieuwbouw ramen en deuren',
+          'Vervangen van enkelglas voor isolatieglas',
           'Renovatie van bestaande kozijnen',
           'Schadeherstel na breuk of inbraak',
         ].map((item) => (

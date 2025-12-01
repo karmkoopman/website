@@ -19,13 +19,13 @@ const HoutrotReparatie = () => (
           <div className="space-y-6">
             <p className="text-slate-700">
               We frezen aangetaste delen uit en vullen ze met hoogwaardige tweecomponenten epoxy. Wanneer nodig vervangen we complete delen
-              door nieuw hardhout dat we volledig in het bestaande werk integreren. Zo voorkomen we dat houtrot terugkomt.
+              door nieuw hardhout dat we volledig in het bestaande werk integreren. Zo garanderen wij een duurzame oplossing waar je in het eindresultaat niets meer van terug ziet.
             </p>
             <ul className="space-y-3 text-slate-700 list-disc list-inside">
               <li>Inspectie van oorzaken zoals lekkages of open verbindingen</li>
               <li>Duurzame reparaties met epoxy of nieuw hardhout</li>
-              <li>Directe afwerking met grondverf en lak</li>
-              <li>Advies voor onderhoud en ventilatie</li>
+              <li>Esthetisch verantwoorde oplossing</li>
+              <li>Advies voor onderhoudscycli en afwatering</li>
             </ul>
             <div className="flex flex-col sm:flex-row gap-4">
               <a href="/offerte" className="px-6 py-3 bg-[#91e5ff] text-slate-900 font-semibold rounded-full text-center hover:bg-[#7fdcff] transition-colors">

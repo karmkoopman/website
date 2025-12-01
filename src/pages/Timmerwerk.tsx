@@ -11,8 +11,8 @@ const Timmerwerk = () => (
         <p className="text-sm uppercase tracking-[0.3em] text-cyan-600 mb-3">Diensten</p>
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Timmerwerk</h1>
         <h2 className="text-xl md:text-2xl font-semibold text-slate-700 mb-8 max-w-3xl">
-          Van het vervangen van boeidelen en kozijnreparaties tot het afmonteren van interieuronderdelen: wij verzorgen het timmerwerk
-          dat nodig is om schilderprojecten perfect af te ronden.
+          Van het vervangen van boeidelen en kozijnreparaties tot het monteren van raamdecoratie: wij verzorgen het timmerwerk
+          dat nodig is om schilderprojecten helemaal af te ronden.
         </h2>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -44,7 +44,7 @@ const Timmerwerk = () => (
         <h2 className="text-2xl font-semibold mb-4">Perfect als voorbereiding op schilderwerk</h2>
         <p className="text-slate-700">
           Door timmerwerk en schilderwerk te combineren hoeven er minder partijen over de vloer te komen. We stemmen alles op elkaar af,
-          waardoor de planning korter wordt en u sneller kunt opleveren.
+          waardoor de planning korter wordt en we kunnen opleveren.
         </p>
       </section>
     </main>
