@@ -6,6 +6,7 @@ import FloatingContactButtons from '@/components/FloatingContactButtons';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import InstagramEmbed from '@/components/InstagramEmbed';
+import InstagramCarousel from '@/components/InstagramCarousel';
 import { serviceIntros } from '@/content/serviceIntros';
 import heroImage from '@/assets/hero-painter.webp';
 import paintedInterior from '@/assets/Ad (1 of 1)-22.jpg';
@@ -320,12 +321,8 @@ const Home = () => {
       </div>
     </section>
 
-    {/* Instagram reel/post boven werkzaamheden */}
-    {/* Vervang de embedUrl hieronder door de exacte embed-link van jouw reel of post.
-        Ga in Instagram naar de post → Delen → Insluiten → kopieer de URL die eindigt op /embed */}
-    <InstagramEmbed
-      title="Bekijk ook onze instagram pagina"
-    />
+    {/* Instagram Carousel */}
+    <InstagramCarousel title="Volg ons op Instagram" />
 
     {/* Werkzaamheden */}
     <section id="werkzaamheden" className="py-20 bg-slate-50">
