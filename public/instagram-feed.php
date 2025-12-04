@@ -4,6 +4,24 @@ header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET');
 header('Access-Control-Allow-Headers: Content-Type');
 
+// Cache configuration (in seconds)
+$cache_duration = 300; // 5 minutes
+$cache_file = __DIR__ . '/instagram-feed-cache.json';
+
+// Check if cache exists and is still valid
+if (file_exists($cache_file)) {
+    $cache_age = time() - filemtime($cache_file);
+
+    if ($cache_age < $cache_duration) {
+        // Serve cached data
+        $cached_data = file_get_contents($cache_file);
+        if ($cached_data !== false) {
+            echo $cached_data;
+            exit;
+        }
+    }
+}
+
 // Instagram Graph API configuration
 // Replace these with your actual credentials
 $instagram_business_account_id = getenv('INSTAGRAM_ACCOUNT_ID') ?: '17841477979204687';
@@ -64,9 +82,15 @@ if (json_last_error() !== JSON_ERROR_NONE) {
     exit;
 }
 
-// Return successful response
-echo json_encode([
+// Prepare successful response
+$response_json = json_encode([
     'error' => false,
     'data' => $data['data'] ?? [],
     'paging' => $data['paging'] ?? null
 ]);
+
+// Save to cache
+file_put_contents($cache_file, $response_json);
+
+// Return successful response
+echo $response_json;

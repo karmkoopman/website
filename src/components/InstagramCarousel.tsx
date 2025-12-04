@@ -27,12 +27,15 @@ interface InstagramFeedResponse {
 
 interface InstagramCarouselProps {
   title?: string;
-  apiUrl?: string;
 }
+
+// Use production URL during local development, relative path in production
+const API_URL = import.meta.env.DEV
+  ? 'https://koopmanschilderwerken.nl/instagram-feed.php'
+  : '/instagram-feed.php';
 
 const InstagramCarousel = ({
   title = "Volg ons op Instagram",
-  apiUrl = "/instagram-feed.php"
 }: InstagramCarouselProps) => {
   const [posts, setPosts] = useState<InstagramPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -41,7 +44,7 @@ const InstagramCarousel = ({
   useEffect(() => {
     const fetchInstagramPosts = async () => {
       try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(API_URL);
         const data: InstagramFeedResponse = await response.json();
 
         if (data.error || !data.data) {
@@ -59,7 +62,7 @@ const InstagramCarousel = ({
     };
 
     fetchInstagramPosts();
-  }, [apiUrl]);
+  }, []);
 
   const truncateCaption = (caption: string | undefined, maxLength: number = 100) => {
     if (!caption) return '';
