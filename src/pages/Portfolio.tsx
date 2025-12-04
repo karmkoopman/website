@@ -1,7 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FloatingContactButtons from '@/components/FloatingContactButtons';
-import InstagramEmbed from '@/components/InstagramEmbed';
+import InstagramCarousel from '@/components/InstagramCarousel';
 
 const Portfolio = () => {
   return (
@@ -18,7 +18,7 @@ const Portfolio = () => {
           </p>
         </section>
 
-        <InstagramEmbed title="Bekijk ook onze instagram pagina" />
+        <InstagramCarousel title="Bekijk ook onze instagram pagina" />
       </main>
       <FloatingContactButtons />
       <Footer />

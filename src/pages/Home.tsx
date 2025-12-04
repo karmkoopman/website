@@ -5,7 +5,6 @@ import Footer from '@/components/Footer';
 import FloatingContactButtons from '@/components/FloatingContactButtons';
 import { Dialog, DialogContent, DialogClose } from '@/components/ui/dialog';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import InstagramEmbed from '@/components/InstagramEmbed';
 import InstagramCarousel from '@/components/InstagramCarousel';
 import { serviceIntros } from '@/content/serviceIntros';
 import heroImage from '@/assets/hero-painter.webp';

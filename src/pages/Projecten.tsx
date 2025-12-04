@@ -2,7 +2,6 @@ import Header from '@/components/Header';
 import Projects from '@/components/Projects';
 import Footer from '@/components/Footer';
 import FloatingContactButtons from '@/components/FloatingContactButtons';
-import InstagramCarousel from '@/components/InstagramCarousel';
 
 
 const Projecten = () => {
@@ -11,9 +10,6 @@ const Projecten = () => {
       <Header />
       <div className="pt-20 space-y-12">
         <Projects />
-        <InstagramCarousel
-          title="Bekijk ook onze Instagram pagina"
-        />
       </div>
       <FloatingContactButtons />
       <Footer />

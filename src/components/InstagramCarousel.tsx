@@ -75,7 +75,10 @@ const InstagramCarousel = ({
     return (
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">{title}</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-3">
+            <Instagram className="h-6 w-6" />
+            Koopmanschilderwerken
+          </h2>
           <div className="flex justify-center items-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
           </div>
@@ -88,7 +91,10 @@ const InstagramCarousel = ({
     return (
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">{title}</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-3">
+            <Instagram className="h-6 w-6" />
+            Koopmanschilderwerken
+          </h2>
           <div className="flex flex-col items-center justify-center py-12 text-slate-500">
             <Instagram className="h-16 w-16 mb-4" />
             <p>{error || 'Geen Instagram posts beschikbaar'}</p>
@@ -101,7 +107,10 @@ const InstagramCarousel = ({
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">{title}</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-3">
+          <Instagram className="h-6 w-6" />
+          Koopmanschilderwerken
+        </h2>
 
         <Carousel
           opts={{
