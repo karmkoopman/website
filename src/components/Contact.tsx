@@ -53,11 +53,12 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-card">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold text-center mb-4 text-card-foreground pr-20 lg:pr-0">
+          <p className="text-sm uppercase tracking-[0.3em] text-cyan-600 mb-3">Offerte & contact</p>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 text-card-foreground pr-20 lg:pr-0">
             Advies gesprek
           </h1>
           
-          <p className="text-lg leading-relaxed text-card-foreground mb-12 text-center max-w-4xl mx-auto pr-20 lg:pr-0">
+          <p className="text-lg leading-relaxed text-card-foreground mb-12 max-w-4xl pr-20 lg:pr-0">
             Om een vrijblijvend advies gesprek in te plannen en het opmaken van een offerte maken wij direct tijd voor u. Vul het aanvraagformulier hieronder in of bel/whatsapp ons voor het maken van een afspraak.
           </p>
           

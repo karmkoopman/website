@@ -30,11 +30,11 @@ const Header = () => {
       <div className="bg-white border-b border-slate-200">
         <div className="container mx-auto px-4 py-2 flex items-end justify-between">
           <Link to="/" className="flex items-center self-center">
-            <img src={logo1} alt="Koopman Schilderwerken" className="h-14 w-auto object-contain" />
-          </Link>
+          <img src={logo1} alt="Koopman Schilderwerken" className="h-14 w-auto object-contain" />
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex space-x-6">
           <Link
             to="/"
             className={`transition-colors ${
@@ -56,8 +56,8 @@ const Header = () => {
             onMouseEnter={() => setIsServicesOpen(true)}
             onMouseLeave={() => setIsServicesOpen(false)}
           >
-            <Link
-              to="/werkzaamheden"
+          <Link
+            to="/werkzaamheden"
               className={`inline-flex items-center gap-2 transition-colors ${
                 location.pathname.startsWith('/werkzaamheden') ||
                 ['schilderwerk', 'houtrot-reparatie', 'glaszetten', 'timmerwerk', 'reparatiewerk'].some((slug) =>
@@ -65,9 +65,9 @@ const Header = () => {
                 )
                   ? 'text-primary font-medium'
                   : 'text-foreground hover:text-primary'
-              }`}
-            >
-              Werkzaamheden
+            }`}
+          >
+            Werkzaamheden
               <span className={`text-xs transition-transform ${isServicesOpen ? 'rotate-180' : ''}`}>▼</span>
             </Link>
             {isServicesOpen && (
@@ -86,7 +86,7 @@ const Header = () => {
                       }`}
                     >
                       {link.label}
-                    </Link>
+          </Link>
                   ))}
                 </div>
               </div>
@@ -116,17 +116,17 @@ const Header = () => {
           >
             Offerte
           </Link>
-          </nav>
+        </nav>
 
-          {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X /> : <Menu />}
-          </Button>
+        {/* Mobile Menu Button */}
+        <Button
+          variant="ghost"
+          size="icon"
+          className="md:hidden"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X /> : <Menu />}
+        </Button>
         </div>
       </div>
 
@@ -162,6 +162,15 @@ const Header = () => {
                 <span className="text-sm text-muted-foreground group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <div className="ml-4 mt-2 space-y-2 border-l border-border pl-4 text-sm">
+                <Link
+                  to="/werkzaamheden"
+                  onClick={closeMenu}
+                  className={`block transition-colors ${
+                    isActive('/werkzaamheden') ? 'text-primary font-medium' : 'text-foreground hover:text-primary'
+                  }`}
+                >
+                  Overzicht werkzaamheden
+                </Link>
                 {serviceLinks.map((link) => (
                   <Link
                     key={link.to}

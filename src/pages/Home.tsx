@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FloatingContactButtons from '@/components/FloatingContactButtons';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Dialog, DialogContent, DialogClose } from '@/components/ui/dialog';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import InstagramEmbed from '@/components/InstagramEmbed';
 import InstagramCarousel from '@/components/InstagramCarousel';
 import { serviceIntros } from '@/content/serviceIntros';
@@ -135,8 +135,8 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-white text-slate-900">
-      <Header />
+  <div className="bg-white text-slate-900">
+    <Header />
 
     {/* Hero */}
     <section className="relative isolate min-h-[60vh] md:min-h-[70vh] flex items-center bg-slate-900 text-white mt-16" id="hero">
@@ -281,9 +281,9 @@ const Home = () => {
                   Veveo
                 </span>
               </div>
-            </div>
           </div>
         </div>
+      </div>
         
         <div className="grid md:grid-cols-2 rounded-2xl md:rounded-3xl overflow-hidden">
           <div className="relative w-full border border-slate-200 md:border-r-0 rounded-t-2xl md:rounded-l-2xl md:rounded-r-none rounded-b-none md:rounded-b-2xl overflow-hidden">
@@ -316,7 +316,7 @@ const Home = () => {
                 </li>
               ))}
             </ul>
-          </div>
+            </div>
         </div>
       </div>
     </section>
@@ -393,7 +393,7 @@ const Home = () => {
                     Lees meer…
                   </Link>
                 </div>
-              </article>
+          </article>
             );
           })}
         </div>
@@ -428,37 +428,46 @@ const Home = () => {
             className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 md:px-10"
           >
             {projects.map((project, index) => (
-              <button
+              <div
                 key={index}
-                data-project-index={index}
-                onClick={() => {
-                  setSelectedProject(index);
-                  setSelectedImageIndex(0);
-                }}
-                className={`group relative overflow-hidden rounded-2xl aspect-square cursor-pointer transition-all duration-700 ease-out snap-start min-w-[260px] md:min-w-[320px] lg:min-w-[360px] ${
+                className={`snap-start min-w-[260px] md:min-w-[320px] lg:min-w-[360px] transition-all duration-700 ease-out ${
                   visibleProjects[index]
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-8'
                 }`}
+                data-project-index={index}
                 style={{
                   transitionDelay: visibleProjects[index] ? `${index * 150}ms` : '0ms',
                 }}
               >
-                <img
-                  src={project.images[0]}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-                {project.images.length > 1 && (
-                  <div className="absolute top-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                    {project.images.length} foto's
-                  </div>
-                )}
-              </button>
-            ))}
+                <button
+                  onClick={() => {
+                    setSelectedProject(index);
+                    setSelectedImageIndex(0);
+                  }}
+                  className="group relative overflow-hidden rounded-2xl aspect-square w-full cursor-pointer"
+                >
+                  <img
+                    src={project.images[0]}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
+                </button>
+                <div className="mt-2">
+                  <p className="text-sm font-semibold text-slate-800">
+                    {project.title}
+                  </p>
+                  {project.location && (
+                    <p className="text-xs text-slate-500">
+                      {project.location}
+                    </p>
+                  )}
+                </div>
           </div>
+            ))}
         </div>
+      </div>
 
         <Dialog open={selectedProject !== null} onOpenChange={() => {
           setSelectedProject(null);
@@ -469,6 +478,16 @@ const Home = () => {
               <div className="relative flex flex-col h-full">
                 {/* Image container with navigation */}
                 <div className="relative flex-1 overflow-hidden bg-slate-900">
+                  {/* Extra, goed zichtbare sluitknop (vooral voor mobiel) */}
+                  <DialogClose asChild>
+                    <button
+                      className="absolute right-3 top-3 z-20 inline-flex items-center justify-center rounded-full bg-black/60 px-3 py-2 text-xs font-medium text-white hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-white"
+                    >
+                      <X className="mr-1 h-4 w-4" />
+                      Sluit
+                    </button>
+                  </DialogClose>
+
                   <img
                     src={projects[selectedProject].images[selectedImageIndex]}
                     alt={`${projects[selectedProject].title} - Foto ${selectedImageIndex + 1}`}
@@ -496,10 +515,10 @@ const Home = () => {
                       {/* Image counter */}
                       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded text-sm">
                         {selectedImageIndex + 1} / {projects[selectedProject].images.length}
-                      </div>
+          </div>
                     </>
                   )}
-                </div>
+        </div>
                 
                 {/* Project info */}
                 <div className="p-6 bg-white">
@@ -528,7 +547,7 @@ const Home = () => {
                           />
                         </button>
                       ))}
-                    </div>
+          </div>
                   )}
                   
                   <Link
@@ -541,8 +560,17 @@ const Home = () => {
                   >
                     Bekijk alle projecten
                   </Link>
-                </div>
-              </div>
+
+                  {/* Extra sluitknop onderaan, vooral handig op kleine schermen */}
+                  <div className="mt-3 md:hidden">
+                    <DialogClose asChild>
+                      <button className="w-full rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+                        Sluit foto's
+                      </button>
+                    </DialogClose>
+          </div>
+          </div>
+          </div>
             )}
           </DialogContent>
         </Dialog>
@@ -552,7 +580,7 @@ const Home = () => {
     <FloatingContactButtons />
     <Footer />
   </div>
-  );
+);
 };
 
 export default Home;

@@ -10,8 +10,9 @@ const Review = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md mx-auto text-center">
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <div className="max-w-md mx-auto text-center pt-28 flex-1">
+        <p className="text-sm uppercase tracking-[0.3em] text-cyan-600 mb-3">Reviews</p>
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
         <h1 className="text-xl font-semibold text-gray-900 mb-2">
           Bezig met doorverwijzen...
