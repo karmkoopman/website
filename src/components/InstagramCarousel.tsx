@@ -114,11 +114,12 @@ const InstagramCarousel = ({
 
         <Carousel
           opts={{
+            align: "start",
             loop: true,
           }}
-          className="w-full max-w-5xl mx-auto"
+          className="w-full max-w-4xl mx-auto"
         >
-          <CarouselContent>
+          <CarouselContent className="-ml-2 md:-ml-4">
             {posts.map((post) => {
               const imageUrl =
                 post.media_type === 'VIDEO' && post.thumbnail_url
@@ -132,33 +133,33 @@ const InstagramCarousel = ({
               });
 
               return (
-                <CarouselItem key={post.id} className="basis-full">
+                <CarouselItem key={post.id} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
                   <a
                     href={post.permalink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block"
+                    className="block group"
                   >
-                    <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl bg-slate-900">
-                      {/* Achtergrondfoto zoals in het voorbeeld */}
+                    <div className="relative w-full aspect-[4/5] overflow-hidden rounded-lg bg-slate-900 shadow-lg transition-transform duration-300 group-hover:scale-105">
+                      {/* Achtergrondfoto - 1080x1350px formaat */}
                       <div
                         className="absolute inset-0 bg-center bg-cover"
                         style={{ backgroundImage: `url(${imageUrl})` }}
                       />
                       {/* Donkere overlay */}
-                      <div className="absolute inset-0 bg-black/35" />
+                      <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors" />
 
-                      {/* Info-balk onderin, vergelijkbaar met jouw HTML-voorbeeld */}
-                      <div className="relative z-10 flex h-full flex-col justify-end p-4 sm:p-6">
-                        <div className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-cyan-300 mb-1">
+                      {/* Info-balk onderin */}
+                      <div className="relative z-10 flex h-full flex-col justify-end p-3 sm:p-4">
+                        <div className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-cyan-300 mb-1">
                           @{post.username}
                         </div>
                         {post.caption && (
-                          <p className="text-sm sm:text-base font-medium text-white drop-shadow-md line-clamp-2">
-                            {truncateCaption(post.caption, 100)}
+                          <p className="text-xs sm:text-sm font-medium text-white drop-shadow-md line-clamp-2">
+                            {truncateCaption(post.caption, 80)}
                           </p>
                         )}
-                        <div className="mt-1 text-[11px] text-slate-100/80">
+                        <div className="mt-1 text-[10px] text-slate-100/80">
                           {formattedDate}
                         </div>
                       </div>
