@@ -9,6 +9,7 @@ const Sitemap = () => {
       <Header />
       <main className="pt-24 pb-20">
         <section className="container mx-auto px-4 max-w-5xl">
+          <p className="text-sm uppercase tracking-[0.3em] text-cyan-600 mb-3">Sitemap</p>
           <h1 className="text-3xl md:text-4xl font-bold mb-6">Sitemap</h1>
           <p className="text-slate-600 mb-8">
             Overzicht van alle belangrijke pagina&apos;s op de website van Koopman Schilderwerken.

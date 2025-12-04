@@ -60,10 +60,21 @@ const Footer = () => {
           
           <div className="border-t border-primary-foreground/20 mt-2 pt-2 text-center">
             {/* KVK/BTW text */}
-            <p className="text-[9px] opacity-80 mb-1">KVK : 97982644 &nbsp; &nbsp; BTW-Nr. : NL001234567B01</p>
-            <div className="flex flex-col items-center gap-1">
+            <p className="text-[9px] opacity-80 mb-1">
+              KVK : 97982644 &nbsp; &nbsp; BTW-Nr. : NL001234567B01
+            </p>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-2">
               <p className="text-[6px] opacity-75">
-                © {new Date().getFullYear()} Koopman Schilderwerken. Alle rechten voorbehouden.
+                © {new Date().getFullYear()} Koopman Schilderwerken en{' '}
+                <a
+                  href="https://va-bizzybee.nl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline opacity-90 hover:opacity-100"
+                >
+                  Va-BizzyBee
+                </a>
+                . Alle rechten voorbehouden.
               </p>
               <a href="/sitemap" className="text-[7px] underline opacity-80 hover:opacity-100">
                 Sitemap

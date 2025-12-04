@@ -147,7 +147,8 @@ const Projects = () => {
     <section id="projecten" className="py-8 md:py-16 bg-muted">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-foreground pr-20 lg:pr-0">
+          <p className="text-sm uppercase tracking-[0.3em] text-cyan-600 mb-3">Projecten</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-foreground pr-20 lg:pr-0">
             Projecten
           </h2>
           
@@ -171,11 +172,6 @@ const Projects = () => {
                       className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-primary/20 hover:bg-primary/30 transition-colors" />
-                    {project.images.length > 1 && (
-                      <div className="absolute top-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                        {project.images.length} foto's
-                      </div>
-                    )}
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-card-foreground mb-2 pr-20 lg:pr-0">
