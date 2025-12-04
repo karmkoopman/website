@@ -102,72 +102,67 @@ const InstagramCarousel = ({
 
         <Carousel
           opts={{
-            align: "start",
             loop: true,
           }}
-          className="w-full max-w-6xl mx-auto"
+          className="w-full max-w-5xl mx-auto"
         >
-          <CarouselContent className="-ml-2 md:-ml-4">
-            {posts.map((post) => (
-              <CarouselItem key={post.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                <div className="group relative overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm hover:shadow-md transition-shadow">
+          <CarouselContent>
+            {posts.map((post) => {
+              const imageUrl =
+                post.media_type === 'VIDEO' && post.thumbnail_url
+                  ? post.thumbnail_url
+                  : post.media_url;
+
+              const formattedDate = new Date(post.timestamp).toLocaleDateString('nl-NL', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+              });
+
+              return (
+                <CarouselItem key={post.id} className="basis-full">
                   <a
                     href={post.permalink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block"
                   >
-                    {/* Image */}
-                    <div className="relative aspect-square overflow-hidden bg-slate-100">
-                      <img
-                        src={post.media_type === 'VIDEO' && post.thumbnail_url ? post.thumbnail_url : post.media_url}
-                        alt={truncateCaption(post.caption, 50)}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                        loading="lazy"
+                    <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl bg-slate-900">
+                      {/* Achtergrondfoto zoals in het voorbeeld */}
+                      <div
+                        className="absolute inset-0 bg-center bg-cover"
+                        style={{ backgroundImage: `url(${imageUrl})` }}
                       />
+                      {/* Donkere overlay */}
+                      <div className="absolute inset-0 bg-black/35" />
 
-                      {/* Instagram icon overlay */}
-                      <div className="absolute top-2 right-2 bg-black/50 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <ExternalLink className="h-4 w-4 text-white" />
+                      {/* Info-balk onderin, vergelijkbaar met jouw HTML-voorbeeld */}
+                      <div className="relative z-10 flex h-full flex-col justify-end p-4 sm:p-6">
+                        <div className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-cyan-300 mb-1">
+                          @{post.username}
+                        </div>
+                        {post.caption && (
+                          <p className="text-sm sm:text-base font-medium text-white drop-shadow-md line-clamp-2">
+                            {truncateCaption(post.caption, 100)}
+                          </p>
+                        )}
+                        <div className="mt-1 text-[11px] text-slate-100/80">
+                          {formattedDate}
+                        </div>
                       </div>
-
-                      {/* Media type indicator */}
-                      {post.media_type === 'VIDEO' && (
-                        <div className="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded flex items-center gap-1">
-                          <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
-                          </svg>
-                          Video
-                        </div>
-                      )}
-                      {post.media_type === 'CAROUSEL_ALBUM' && (
-                        <div className="absolute bottom-2 left-2 bg-black/70 text-white text-xs px-2 py-1 rounded flex items-center gap-1">
-                          <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
-                          </svg>
-                          Meerdere
-                        </div>
-                      )}
                     </div>
-
-                    {/* Caption */}
-                    {post.caption && (
-                      <div className="p-4">
-                        <p className="text-sm text-slate-700 line-clamp-3">
-                          {truncateCaption(post.caption, 150)}
-                        </p>
-                      </div>
-                    )}
                   </a>
-                </div>
-              </CarouselItem>
-            ))}
+                </CarouselItem>
+              );
+            })}
           </CarouselContent>
+
+          {/* Navigatiepijlen alleen op desktop tonen */}
           <CarouselPrevious className="hidden md:flex" />
           <CarouselNext className="hidden md:flex" />
         </Carousel>
 
-        {/* View Instagram profile link */}
+        {/* Footer-knop onder de carrousel: volg ons op Instagram */}
         <div className="text-center mt-8">
           <a
             href={posts[0] ? `https://www.instagram.com/${posts[0].username}` : 'https://www.instagram.com'}
@@ -176,7 +171,7 @@ const InstagramCarousel = ({
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold rounded-full hover:from-purple-600 hover:to-pink-600 transition-all"
           >
             <Instagram className="h-5 w-5" />
-            Bekijk ons Instagram profiel
+            Volg ons op Instagram
           </a>
         </div>
       </div>
