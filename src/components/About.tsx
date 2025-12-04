@@ -6,7 +6,8 @@ const About = () => {
     <section id="over-ons" className="py-20 bg-card">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-card-foreground pr-20 lg:pr-0">
+          <p className="text-sm uppercase tracking-[0.3em] text-cyan-600 mb-3">Over ons</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-card-foreground pr-20 lg:pr-0">
             Over ons
           </h2>
           
