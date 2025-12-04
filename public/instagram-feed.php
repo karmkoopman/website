@@ -6,8 +6,8 @@ header('Access-Control-Allow-Headers: Content-Type');
 
 // Instagram Graph API configuration
 // Replace these with your actual credentials
-$instagram_business_account_id = getenv('INSTAGRAM_ACCOUNT_ID') ?: 'YOUR_INSTAGRAM_BUSINESS_ACCOUNT_ID';
-$access_token = getenv('INSTAGRAM_ACCESS_TOKEN') ?: 'YOUR_ACCESS_TOKEN';
+$instagram_business_account_id = getenv('INSTAGRAM_ACCOUNT_ID') ?: '1415943909929598';
+$access_token = getenv('INSTAGRAM_ACCESS_TOKEN') ?: 'IGAAUHyyHF8n5BZAFR2bDNlbDBiQmxBWGx2MkZAFMHdJMVFQRkdJN3JCRHBjLUt1TnZAYQ3hVRkgwNzBmRk5qOFBkckZAqTkY5dTFsLVA2QnF5Tlg0UkNSZAy1NLWdrZAjNhVGhtR1pTajdqOU9HUHg2dHFHN0R6SnJ4UWxiTFQyTzEwawZDZD';
 
 // Fields to retrieve from Instagram posts
 $fields = 'id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username';
