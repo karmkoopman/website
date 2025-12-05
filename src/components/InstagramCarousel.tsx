@@ -179,19 +179,19 @@ const InstagramCarousel = ({
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Linker pijl */}
+          {/* Linker pijl - alleen zichtbaar op desktop */}
           <button
             onClick={handlePrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-300 hover:border-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-lg"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-300 hover:border-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-lg"
             aria-label="Vorige slide"
           >
             <ChevronLeft className="h-6 w-6" />
           </button>
 
-          {/* Rechter pijl */}
+          {/* Rechter pijl - alleen zichtbaar op desktop */}
           <button
             onClick={handleNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-300 hover:border-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-lg"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-20 items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-300 hover:border-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-lg"
             aria-label="Volgende slide"
           >
             <ChevronRight className="h-6 w-6" />
