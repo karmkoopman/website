@@ -162,13 +162,13 @@ const Header = () => {
                 <span className="text-sm text-muted-foreground group-open:rotate-180 transition-transform">▼</span>
               </summary>
               <div className="ml-4 mt-2 space-y-2 border-l border-border pl-4 text-sm">
-                <Link
-                  to="/werkzaamheden"
-                  onClick={closeMenu}
+            <Link
+              to="/werkzaamheden"
+              onClick={closeMenu}
                   className={`block transition-colors ${
-                    isActive('/werkzaamheden') ? 'text-primary font-medium' : 'text-foreground hover:text-primary'
-                  }`}
-                >
+                isActive('/werkzaamheden') ? 'text-primary font-medium' : 'text-foreground hover:text-primary'
+              }`}
+            >
                   Overzicht werkzaamheden
                 </Link>
                 {serviceLinks.map((link) => (
@@ -181,7 +181,7 @@ const Header = () => {
                     }`}
                   >
                     {link.label}
-                  </Link>
+            </Link>
                 ))}
               </div>
             </details>

@@ -64,7 +64,7 @@ const Footer = () => {
               KVK : 97982644 &nbsp; &nbsp; BTW-Nr. : NL001234567B01
             </p>
             <div className="flex flex-col md:flex-row items-center justify-center gap-2">
-              <p className="text-[6px] opacity-75">
+            <p className="text-[6px] opacity-75">
                 © {new Date().getFullYear()} Koopman Schilderwerken en{' '}
                 <a
                   href="https://va-bizzybee.nl"
@@ -75,7 +75,7 @@ const Footer = () => {
                   Va-BizzyBee
                 </a>
                 . Alle rechten voorbehouden.
-              </p>
+            </p>
               <a href="/sitemap" className="text-[7px] underline opacity-80 hover:opacity-100">
                 Sitemap
               </a>

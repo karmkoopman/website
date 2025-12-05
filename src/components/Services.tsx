@@ -1,6 +1,7 @@
 // Services component - displays all available services with descriptions and images
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
+import { ChevronRight } from 'lucide-react';
 import glasIcon from '@/assets/glas.png';
 import schilderIcon from '@/assets/schilder.png';
 import houtrotIcon from '@/assets/houtrot.png';
@@ -68,9 +69,18 @@ const Services = () => {
                       <div className="p-8 md:p-12 flex flex-col justify-center">
                         <div className="flex items-center gap-4 mb-6 pr-20 lg:pr-0">
                           {service.icon}
-                          <h3 className="text-2xl md:text-3xl font-bold text-card-foreground">
-                            {service.title}
-                          </h3>
+                          <div className="flex items-center gap-2">
+                            <h3 className="text-2xl md:text-3xl font-bold text-card-foreground">
+                              {service.title}
+                            </h3>
+                            <Link 
+                              to={`/${service.slug}`}
+                              onClick={(e) => e.stopPropagation()}
+                              className="text-primary hover:text-primary/80 transition-colors"
+                            >
+                              <ChevronRight className="h-6 w-6 md:h-7 md:w-7" />
+                            </Link>
+                          </div>
                         </div>
                         <p className="text-lg leading-relaxed text-muted-foreground pr-20 lg:pr-0">
                           {service.description}

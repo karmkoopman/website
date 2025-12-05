@@ -134,27 +134,27 @@ const Home = () => {
   };
 
   return (
-  <div className="bg-white text-slate-900">
-    <Header />
+    <div className="bg-white text-slate-900">
+      <Header />
 
-    {/* Hero */}
-    <section className="relative isolate min-h-[60vh] md:min-h-[70vh] flex items-center bg-slate-900 text-white mt-16" id="hero">
-      <div className="absolute inset-0">
-        <img src={heroImage} alt="Schilder aan het werk" className="w-full h-full object-cover brightness-50" />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-transparent" />
-      </div>
-      <div className="relative z-10 container mx-auto px-4 md:px-6 py-16 md:py-24 max-w-3xl space-y-6 md:space-y-8 text-center">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-          "Degelijk werk kent zijn waarde"
-        </h1>
-        <p className="text-lg md:text-xl lg:text-2xl text-slate-100">
-          Professioneel Buiten- en Binnenschilderwerk
-        </p>
-      </div>
-    </section>
+      {/* Hero */}
+      <section className="relative isolate min-h-[60vh] md:min-h-[70vh] flex items-center bg-slate-900 text-white mt-16" id="hero">
+        <div className="absolute inset-0">
+          <img src={heroImage} alt="Schilder aan het werk" className="w-full h-full object-cover brightness-50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-transparent" />
+        </div>
+        <div className="relative z-10 container mx-auto px-4 md:px-6 py-16 md:py-24 max-w-3xl space-y-6 md:space-y-8 text-center">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+            "Degelijk werk kent zijn waarde"
+          </h1>
+          <p className="text-lg md:text-xl lg:text-2xl text-slate-100">
+            Professioneel Buiten- en Binnenschilderwerk
+          </p>
+        </div>
+      </section>
 
-    {/* Intro content under header */}
-    <section className="bg-white py-8 md:py-12 border-b border-slate-100">
+      {/* Intro content under header */}
+      <section className="bg-white py-8 md:py-12 border-b border-slate-100">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl space-y-6 md:space-y-8 text-center">
         <p className="text-base md:text-lg text-slate-700">
           Of het nu gaat om een verhuizing of verbouwing, of een renovatieproject aan het buiten schilderwerk. Wij nemen de tijd om uw wensen te bespreken en leveren strak en duurzaam schilderwerk met garantie.
@@ -202,8 +202,8 @@ const Home = () => {
       </div>
     </section>
 
-    {/* Google Reviews Logo */}
-    <section className="bg-white pb-4 md:pb-4 pt-6 md:pt-8">
+      {/* Google Reviews Logo */}
+      <section className="bg-white pb-4 md:pb-4 pt-6 md:pt-8">
       <div className="container mx-auto px-4 md:px-6 flex justify-center">
         <a href="https://www.google.com/maps/search/Koopman+Schilderwerken+Hengelo/@52.2658,6.7933,15z/data=!4m2!2m1!4b1?entry=ttu&hl=nl#reviews" target="_blank" rel="noreferrer" className="inline-block hover:opacity-80 transition-opacity">
           <img src={googleReviewLogo} alt="Bekijk onze Google reviews" className="h-16 md:h-20 w-auto" />
@@ -211,8 +211,8 @@ const Home = () => {
       </div>
     </section>
 
-    {/* Over ons */}
-    <section id="over-ons" className="bg-slate-50 pt-8 md:pt-12 pb-12 md:pb-20">
+      {/* Over ons */}
+      <section id="over-ons" className="bg-slate-50 pt-8 md:pt-12 pb-12 md:pb-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-8 md:mb-12">
           <div className="grid md:grid-cols-3 rounded-2xl md:rounded-3xl overflow-hidden gap-0 md:gap-0">
@@ -257,32 +257,32 @@ const Home = () => {
             Kwaliteits producten waar wij mee werken
           </h2>
           <div className="grid grid-cols-3 md:grid-cols-3 gap-4 md:gap-6 items-center justify-items-center">
-            <div className="relative group cursor-pointer">
-              <img src={sigmaLogo} alt="Sigma leverancier" className="h-10 w-auto md:h-16 object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute inset-0 bg-[#e0f7ff] bg-opacity-0 group-hover:bg-opacity-90 transition-all duration-200 flex items-center justify-center rounded-lg">
-                <span className="text-slate-900 font-semibold text-xs md:text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-center px-2">
-                  Sigma Coatings
-                </span>
-              </div>
-            </div>
-            <div className="relative group cursor-pointer">
-              <img src={renovaidLogo} alt="Renovaid leverancier" className="h-10 w-auto md:h-16 object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute inset-0 bg-[#e0f7ff] bg-opacity-0 group-hover:bg-opacity-90 transition-all duration-200 flex items-center justify-center rounded-lg">
-                <span className="text-slate-900 font-semibold text-xs md:text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-center px-2">
-                  Renovaid
-                </span>
-              </div>
-            </div>
-            <div className="relative group cursor-pointer">
-              <img src={veveoLogo} alt="Veveo leverancier" className="h-10 w-auto md:h-16 object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute inset-0 bg-[#e0f7ff] bg-opacity-0 group-hover:bg-opacity-90 transition-all duration-200 flex items-center justify-center rounded-lg">
-                <span className="text-slate-900 font-semibold text-xs md:text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-center px-2">
-                  Veveo
-                </span>
-              </div>
+            <a 
+              href="https://www.sigma.nl" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="cursor-pointer"
+            >
+              <img src={sigmaLogo} alt="Sigma leverancier" className="h-10 w-auto md:h-16 object-contain" />
+            </a>
+            <a 
+              href="https://www.renovaid.nl" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="cursor-pointer"
+            >
+              <img src={renovaidLogo} alt="Renovaid leverancier" className="h-10 w-auto md:h-16 object-contain" />
+            </a>
+            <a 
+              href="https://www.veveo.nl" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="cursor-pointer"
+            >
+              <img src={veveoLogo} alt="Veveo leverancier" className="h-10 w-auto md:h-16 object-contain" />
+            </a>
           </div>
         </div>
-      </div>
         
         <div className="grid md:grid-cols-2 rounded-2xl md:rounded-3xl overflow-hidden">
           <div className="relative w-full border border-slate-200 md:border-r-0 rounded-t-2xl md:rounded-l-2xl md:rounded-r-none rounded-b-none md:rounded-b-2xl overflow-hidden">
@@ -318,13 +318,13 @@ const Home = () => {
             </div>
         </div>
       </div>
-    </section>
+      </section>
 
-    {/* Instagram Carousel */}
-    <InstagramCarousel title="Volg ons op Instagram" />
+      {/* Instagram Carousel */}
+      <InstagramCarousel title="Volg ons op Instagram" />
 
-    {/* Werkzaamheden */}
-    <section id="werkzaamheden" className="py-20 bg-slate-50">
+      {/* Werkzaamheden */}
+      <section id="werkzaamheden" className="py-20 bg-slate-50">
       <div className="px-4 w-full">
         <h2 className="text-3xl font-bold text-center mb-12">Onze werkzaamheden</h2>
         <div className="space-y-0">
@@ -399,8 +399,8 @@ const Home = () => {
       </div>
     </section>
 
-    {/* Onze projecten */}
-    <section className="py-20 bg-white">
+      {/* Onze projecten */}
+      <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12">Onze projecten</h2>
         <div className="relative">
@@ -574,12 +574,12 @@ const Home = () => {
           </DialogContent>
         </Dialog>
       </div>
-    </section>
+      </section>
 
-    <FloatingContactButtons />
-    <Footer />
-  </div>
-);
+      <FloatingContactButtons />
+      <Footer />
+    </div>
+  );
 };
 
 export default Home;

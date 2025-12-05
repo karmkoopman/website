@@ -1,12 +1,5 @@
-import { useState, useEffect } from 'react';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
-import { ExternalLink, Instagram } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Instagram, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface InstagramPost {
   id: string;
@@ -40,6 +33,11 @@ const InstagramCarousel = ({
   const [posts, setPosts] = useState<InstagramPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
 
   useEffect(() => {
     const fetchInstagramPosts = async () => {
@@ -63,6 +61,60 @@ const InstagramCarousel = ({
 
     fetchInstagramPosts();
   }, []);
+
+  // Controleer video's wanneer currentIndex verandert
+  useEffect(() => {
+    Object.keys(videoRefs.current).forEach((postId) => {
+      const video = videoRefs.current[postId];
+      if (video) {
+        const postIndex = posts.findIndex(p => p.id === postId);
+        if (postIndex === currentIndex) {
+          // Video is centraal - speel af
+          video.play().catch(() => {
+            // Negeer autoplay errors (browsers blokkeren soms autoplay)
+          });
+        } else {
+          // Video is niet centraal - pauzeer
+          video.pause();
+        }
+      }
+    });
+  }, [currentIndex, posts]);
+
+  const handleImageClick = (index: number) => {
+    setCurrentIndex(index);
+  };
+
+  const handlePrevious = () => {
+    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : posts.length - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev < posts.length - 1 ? prev + 1 : 0));
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+
+    if (distance > minSwipeDistance && currentIndex < posts.length - 1) {
+      // Swipe left - next
+      setCurrentIndex(currentIndex + 1);
+    } else if (distance < -minSwipeDistance && currentIndex > 0) {
+      // Swipe right - previous
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
 
   const truncateCaption = (caption: string | undefined, maxLength: number = 100) => {
     if (!caption) return '';
@@ -104,6 +156,9 @@ const InstagramCarousel = ({
     );
   }
 
+  // Zorg dat we minimaal 5 items hebben om te tonen
+  const visibleItems = Math.max(5, posts.length);
+
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -112,19 +167,49 @@ const InstagramCarousel = ({
           Koopmanschilderwerken
         </h2>
 
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
+        <div 
+          ref={carouselRef}
+          className="relative w-full max-w-6xl mx-auto"
+          style={{
+            perspective: '1500px',
+            perspectiveOrigin: 'center center',
+            minHeight: '500px',
           }}
-          className="w-full max-w-4xl mx-auto"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
-          <CarouselContent className="-ml-2 md:-ml-4">
-            {posts.map((post) => {
-              const imageUrl =
-                post.media_type === 'VIDEO' && post.thumbnail_url
-                  ? post.thumbnail_url
-                  : post.media_url;
+          {/* Linker pijl */}
+          <button
+            onClick={handlePrevious}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-300 hover:border-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-lg"
+            aria-label="Vorige slide"
+          >
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+
+          {/* Rechter pijl */}
+          <button
+            onClick={handleNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-300 hover:border-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-lg"
+            aria-label="Volgende slide"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+
+          <div 
+            className="relative flex items-center justify-center"
+            style={{
+              transformStyle: 'preserve-3d',
+              height: '500px',
+            }}
+          >
+            {posts.slice(0, visibleItems).map((post, index) => {
+              const isVideo = post.media_type === 'VIDEO';
+              const imageUrl = isVideo && post.thumbnail_url
+                ? post.thumbnail_url
+                : post.media_url;
+              const videoUrl = isVideo ? post.media_url : null;
 
               const formattedDate = new Date(post.timestamp).toLocaleDateString('nl-NL', {
                 day: '2-digit',
@@ -132,48 +217,136 @@ const InstagramCarousel = ({
                 year: 'numeric',
               });
 
+              // Bereken de afstand van de centrale slide
+              const distance = Math.abs(index - currentIndex);
+              const isCenter = index === currentIndex;
+              const isLeft = index < currentIndex;
+              const isRight = index > currentIndex;
+
+              // 3D transform berekeningen
+              let rotateY = 0;
+              let scale = 1;
+              let translateZ = 0;
+              let translateX = 0;
+              let opacity = 1;
+              let zIndex = 1;
+
+              if (isCenter) {
+                // Centrale slide: groot en prominent
+                scale = 1;
+                rotateY = 0;
+                translateZ = 0;
+                translateX = 0;
+                opacity = 1;
+                zIndex = 10;
+              } else if (distance === 1) {
+                // Directe buren: verkleind en geroteerd met lichte overlap
+                scale = 0.75;
+                rotateY = isLeft ? 35 : -35;
+                translateZ = -100;
+                translateX = isLeft ? -180 : 180;
+                opacity = 0.85;
+                zIndex = 5;
+              } else if (distance === 2) {
+                // Tweede buren: meer verkleind en geroteerd
+                scale = 0.6;
+                rotateY = isLeft ? 50 : -50;
+                translateZ = -200;
+                translateX = isLeft ? -320 : 320;
+                opacity = 0.7;
+                zIndex = 3;
+              } else if (distance === 3) {
+                // Derde buren: nog kleiner
+                scale = 0.5;
+                rotateY = isLeft ? 60 : -60;
+                translateZ = -300;
+                translateX = isLeft ? -420 : 420;
+                opacity = 0.6;
+                zIndex = 2;
+              } else {
+                // Verder weg: nog kleiner
+                scale = 0.4;
+                rotateY = isLeft ? 70 : -70;
+                translateZ = -400;
+                translateX = isLeft ? -500 : 500;
+                opacity = 0.4;
+                zIndex = 1;
+              }
+
               return (
-                <CarouselItem key={post.id} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
-                  <a
-                    href={post.permalink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block group"
-                  >
-                    <div className="relative w-full aspect-[4/5] overflow-hidden rounded-lg bg-slate-900 shadow-lg transition-transform duration-300 group-hover:scale-105">
-                      {/* Achtergrondfoto - 1080x1350px formaat */}
+                <div
+                  key={post.id}
+                  onClick={() => handleImageClick(index)}
+                  className="absolute cursor-pointer"
+                  style={{
+                    transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
+                    opacity: opacity,
+                    transformStyle: 'preserve-3d',
+                    transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease-in-out',
+                    willChange: 'transform, opacity',
+                    zIndex: zIndex,
+                    left: '50%',
+                    marginLeft: '-150px', // Half van de breedte voor centrering
+                  }}
+                >
+                  <div className="relative w-[300px] aspect-[4/5] overflow-hidden rounded-lg bg-slate-900 shadow-2xl transition-transform duration-300 hover:scale-105">
+                    {isVideo && videoUrl ? (
+                      <>
+                        {/* Video element voor reels */}
+                        <video
+                          ref={(el) => {
+                            if (el) {
+                              videoRefs.current[post.id] = el;
+                            }
+                          }}
+                          src={videoUrl}
+                          className="absolute inset-0 w-full h-full object-cover"
+                          playsInline
+                          loop
+                          muted
+                          autoPlay={isCenter}
+                          poster={imageUrl}
+                        />
+                        {/* Play indicator overlay wanneer niet centraal */}
+                        {!isCenter && (
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                            <div className="w-16 h-16 rounded-full bg-black/50 flex items-center justify-center">
+                              <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                              </svg>
+                            </div>
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      /* Afbeelding voor foto's */
                       <div
                         className="absolute inset-0 bg-center bg-cover"
                         style={{ backgroundImage: `url(${imageUrl})` }}
                       />
-                      {/* Donkere overlay */}
-                      <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors" />
+                    )}
 
-                      {/* Info-balk onderin */}
-                      <div className="relative z-10 flex h-full flex-col justify-end p-3 sm:p-4">
-                        <div className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-cyan-300 mb-1">
-                          @{post.username}
-                        </div>
-                        {post.caption && (
-                          <p className="text-xs sm:text-sm font-medium text-white drop-shadow-md line-clamp-2">
-                            {truncateCaption(post.caption, 80)}
-                          </p>
-                        )}
-                        <div className="mt-1 text-[10px] text-slate-100/80">
-                          {formattedDate}
-                        </div>
+                    {/* Info-balk onderin */}
+                    <div className="relative z-10 flex h-full flex-col justify-end p-4 bg-gradient-to-t from-black/40 via-black/10 to-transparent">
+                      <div className="text-[10px] uppercase tracking-[0.2em] text-cyan-300 mb-1">
+                        @{post.username}
+                      </div>
+                      {post.caption && (
+                        <p className="text-xs font-medium text-white drop-shadow-md line-clamp-2">
+                          {truncateCaption(post.caption, 80)}
+                        </p>
+                      )}
+                      <div className="mt-1 text-[10px] text-slate-100/80">
+                        {formattedDate}
                       </div>
                     </div>
-                  </a>
-                </CarouselItem>
+                  </div>
+                </div>
               );
             })}
-          </CarouselContent>
+          </div>
 
-          {/* Navigatiepijlen alleen op desktop tonen */}
-          <CarouselPrevious className="hidden md:flex" />
-          <CarouselNext className="hidden md:flex" />
-        </Carousel>
+        </div>
 
         {/* Footer-knop onder de carrousel: volg ons op Instagram */}
         <div className="text-center mt-8">
