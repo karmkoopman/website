@@ -38,6 +38,8 @@ const InstagramCarousel = ({
   const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
+  const touchStartY = useRef<number>(0);
+  const touchEndY = useRef<number>(0);
 
   useEffect(() => {
     const fetchInstagramPosts = async () => {
@@ -95,25 +97,57 @@ const InstagramCarousel = ({
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+    touchEndX.current = 0;
+    touchEndY.current = 0;
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
+    if (!touchStartX.current) return;
     touchEndX.current = e.touches[0].clientX;
+    touchEndY.current = e.touches[0].clientY;
+    
+    // Bepaal of het een horizontale of verticale beweging is
+    const deltaX = Math.abs(touchStartX.current - touchEndX.current);
+    const deltaY = Math.abs(touchStartY.current - touchEndY.current);
+    
+    // Als horizontale beweging groter is dan verticale, voorkom scrollen
+    if (deltaX > deltaY && deltaX > 10) {
+      e.preventDefault();
+    }
   };
 
-  const handleTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStartX.current || !touchEndX.current) {
+      touchStartX.current = 0;
+      touchEndX.current = 0;
+      touchStartY.current = 0;
+      touchEndY.current = 0;
+      return;
+    }
 
-    const distance = touchStartX.current - touchEndX.current;
+    const deltaX = touchStartX.current - touchEndX.current;
+    const deltaY = Math.abs(touchStartY.current - touchEndY.current);
     const minSwipeDistance = 50;
 
-    if (distance > minSwipeDistance && currentIndex < posts.length - 1) {
-      // Swipe left - next
-      setCurrentIndex(currentIndex + 1);
-    } else if (distance < -minSwipeDistance && currentIndex > 0) {
-      // Swipe right - previous
-      setCurrentIndex(currentIndex - 1);
+    // Alleen reageren op horizontale swipes (niet op verticale scroll)
+    if (Math.abs(deltaX) > deltaY && Math.abs(deltaX) > minSwipeDistance) {
+      if (deltaX > minSwipeDistance && currentIndex < posts.length - 1) {
+        // Swipe left - next
+        e.preventDefault();
+        setCurrentIndex(currentIndex + 1);
+      } else if (deltaX < -minSwipeDistance && currentIndex > 0) {
+        // Swipe right - previous
+        e.preventDefault();
+        setCurrentIndex(currentIndex - 1);
+      }
     }
+    
+    // Reset touch values
+    touchStartX.current = 0;
+    touchEndX.current = 0;
+    touchStartY.current = 0;
+    touchEndY.current = 0;
   };
 
   const truncateCaption = (caption: string | undefined, maxLength: number = 100) => {
@@ -174,6 +208,7 @@ const InstagramCarousel = ({
             perspective: '1500px',
             perspectiveOrigin: 'center center',
             minHeight: '500px',
+            touchAction: 'pan-x', // Sta alleen horizontale swipe toe
           }}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
@@ -287,6 +322,7 @@ const InstagramCarousel = ({
                     zIndex: zIndex,
                     left: '50%',
                     marginLeft: '-150px', // Half van de breedte voor centrering
+                    pointerEvents: 'auto',
                   }}
                 >
                   <div className="relative w-[300px] aspect-[4/5] overflow-hidden rounded-lg bg-slate-900 shadow-2xl transition-transform duration-300 hover:scale-105">
