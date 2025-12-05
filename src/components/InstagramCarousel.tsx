@@ -36,10 +36,6 @@ const InstagramCarousel = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
-  const touchStartX = useRef<number>(0);
-  const touchEndX = useRef<number>(0);
-  const touchStartY = useRef<number>(0);
-  const touchEndY = useRef<number>(0);
 
   useEffect(() => {
     const fetchInstagramPosts = async () => {
@@ -83,8 +79,74 @@ const InstagramCarousel = ({
     });
   }, [currentIndex, posts]);
 
+  // Native touch event listeners voor betere controle op mobiel
+  useEffect(() => {
+    const container = carouselRef.current;
+    if (!container) return;
+
+    let startX = 0;
+    let currentX = 0;
+
+    const onTouchStart = (e: TouchEvent) => {
+      startX = e.touches[0].clientX;
+      currentX = startX;
+      isSwiping.current = false;
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (!startX) return;
+      currentX = e.touches[0].clientX;
+      const deltaX = Math.abs(startX - currentX);
+      
+      // Als horizontale beweging > 10px, voorkom scrollen
+      if (deltaX > 10) {
+        isSwiping.current = true;
+        e.preventDefault();
+      }
+    };
+
+    const onTouchEnd = (e: TouchEvent) => {
+      if (!startX) {
+        startX = 0;
+        currentX = 0;
+        isSwiping.current = false;
+        return;
+      }
+
+      const distance = startX - currentX;
+      const minSwipeDistance = 50;
+
+      if (isSwiping.current && Math.abs(distance) > minSwipeDistance) {
+        e.preventDefault();
+        if (distance > minSwipeDistance && currentIndex < posts.length - 1) {
+          setCurrentIndex(currentIndex + 1);
+        } else if (distance < -minSwipeDistance && currentIndex > 0) {
+          setCurrentIndex(currentIndex - 1);
+        }
+      }
+
+      startX = 0;
+      currentX = 0;
+      isSwiping.current = false;
+    };
+
+    // Gebruik passive: false voor preventDefault
+    container.addEventListener('touchstart', onTouchStart, { passive: true });
+    container.addEventListener('touchmove', onTouchMove, { passive: false });
+    container.addEventListener('touchend', onTouchEnd, { passive: false });
+
+    return () => {
+      container.removeEventListener('touchstart', onTouchStart);
+      container.removeEventListener('touchmove', onTouchMove);
+      container.removeEventListener('touchend', onTouchEnd);
+    };
+  }, [currentIndex, posts.length]);
+
   const handleImageClick = (index: number) => {
-    setCurrentIndex(index);
+    // Alleen klikken als het geen swipe was
+    if (!isSwiping.current) {
+      setCurrentIndex(index);
+    }
   };
 
   const handlePrevious = () => {
@@ -95,60 +157,7 @@ const InstagramCarousel = ({
     setCurrentIndex((prev) => (prev < posts.length - 1 ? prev + 1 : 0));
   };
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
-    touchEndX.current = 0;
-    touchEndY.current = 0;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!touchStartX.current) return;
-    touchEndX.current = e.touches[0].clientX;
-    touchEndY.current = e.touches[0].clientY;
-    
-    // Bepaal of het een horizontale of verticale beweging is
-    const deltaX = Math.abs(touchStartX.current - touchEndX.current);
-    const deltaY = Math.abs(touchStartY.current - touchEndY.current);
-    
-    // Als horizontale beweging groter is dan verticale, voorkom scrollen
-    if (deltaX > deltaY && deltaX > 10) {
-      e.preventDefault();
-    }
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (!touchStartX.current || !touchEndX.current) {
-      touchStartX.current = 0;
-      touchEndX.current = 0;
-      touchStartY.current = 0;
-      touchEndY.current = 0;
-      return;
-    }
-
-    const deltaX = touchStartX.current - touchEndX.current;
-    const deltaY = Math.abs(touchStartY.current - touchEndY.current);
-    const minSwipeDistance = 50;
-
-    // Alleen reageren op horizontale swipes (niet op verticale scroll)
-    if (Math.abs(deltaX) > deltaY && Math.abs(deltaX) > minSwipeDistance) {
-      if (deltaX > minSwipeDistance && currentIndex < posts.length - 1) {
-        // Swipe left - next
-        e.preventDefault();
-        setCurrentIndex(currentIndex + 1);
-      } else if (deltaX < -minSwipeDistance && currentIndex > 0) {
-        // Swipe right - previous
-        e.preventDefault();
-        setCurrentIndex(currentIndex - 1);
-      }
-    }
-    
-    // Reset touch values
-    touchStartX.current = 0;
-    touchEndX.current = 0;
-    touchStartY.current = 0;
-    touchEndY.current = 0;
-  };
+  const isSwiping = useRef<boolean>(false);
 
   const truncateCaption = (caption: string | undefined, maxLength: number = 100) => {
     if (!caption) return '';
@@ -203,16 +212,13 @@ const InstagramCarousel = ({
 
         <div 
           ref={carouselRef}
-          className="relative w-full max-w-6xl mx-auto"
+          className="relative w-full max-w-6xl mx-auto overflow-hidden"
           style={{
             perspective: '1500px',
             perspectiveOrigin: 'center center',
             minHeight: '500px',
-            touchAction: 'pan-x', // Sta alleen horizontale swipe toe
+            touchAction: 'pan-y pinch-zoom', // Sta verticale scroll en pinch-zoom toe, voorkom horizontaal scrollen
           }}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
         >
           {/* Linker pijl - alleen zichtbaar op desktop */}
           <button
@@ -311,7 +317,12 @@ const InstagramCarousel = ({
               return (
                 <div
                   key={post.id}
-                  onClick={() => handleImageClick(index)}
+                  onClick={(e) => {
+                    // Voorkom klikken tijdens/na swipe
+                    if (!isSwiping.current) {
+                      handleImageClick(index);
+                    }
+                  }}
                   className="absolute cursor-pointer"
                   style={{
                     transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
