@@ -381,6 +381,15 @@ const InstagramCarousel = ({
                       />
                     )}
 
+                    {/* Instagram logo overlay boven aan in het midden */}
+                    <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20">
+                      <img 
+                        src={instagramLogo} 
+                        alt="Instagram" 
+                        className="h-6 w-auto drop-shadow-lg"
+                      />
+                    </div>
+
                     {/* Info-balk onderin */}
                     <div className="relative z-10 flex h-full flex-col justify-end p-4 bg-gradient-to-t from-black/40 via-black/10 to-transparent">
                       <div className="text-[10px] uppercase tracking-[0.2em] text-cyan-300 mb-1">
