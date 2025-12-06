@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Instagram, ChevronLeft, ChevronRight } from 'lucide-react';
+import instagramLogo from '@/assets/Instagram-Logo.png';
 
 interface InstagramPost {
   id: string;
@@ -36,6 +37,7 @@ const InstagramCarousel = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
+  const isSwiping = useRef<boolean>(false);
 
   useEffect(() => {
     const fetchInstagramPosts = async () => {
@@ -118,10 +120,12 @@ const InstagramCarousel = ({
 
       if (isSwiping.current && Math.abs(distance) > minSwipeDistance) {
         e.preventDefault();
-        if (distance > minSwipeDistance && currentIndex < posts.length - 1) {
-          setCurrentIndex(currentIndex + 1);
-        } else if (distance < -minSwipeDistance && currentIndex > 0) {
-          setCurrentIndex(currentIndex - 1);
+        if (distance > minSwipeDistance) {
+          // Swipe left - next (loop rond)
+          setCurrentIndex((prev) => (prev < posts.length - 1 ? prev + 1 : 0));
+        } else if (distance < -minSwipeDistance) {
+          // Swipe right - previous (loop rond)
+          setCurrentIndex((prev) => (prev > 0 ? prev - 1 : posts.length - 1));
         }
       }
 
@@ -142,10 +146,10 @@ const InstagramCarousel = ({
     };
   }, [currentIndex, posts.length]);
 
-  const handleImageClick = (index: number) => {
+  const handleImageClick = (permalink: string) => {
     // Alleen klikken als het geen swipe was
     if (!isSwiping.current) {
-      setCurrentIndex(index);
+      window.open(permalink, '_blank', 'noopener,noreferrer');
     }
   };
 
@@ -156,8 +160,6 @@ const InstagramCarousel = ({
   const handleNext = () => {
     setCurrentIndex((prev) => (prev < posts.length - 1 ? prev + 1 : 0));
   };
-
-  const isSwiping = useRef<boolean>(false);
 
   const truncateCaption = (caption: string | undefined, maxLength: number = 100) => {
     if (!caption) return '';
@@ -171,7 +173,7 @@ const InstagramCarousel = ({
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-3">
-            <Instagram className="h-6 w-6" />
+            <img src={instagramLogo} alt="Instagram" className="h-8 w-auto" />
             Koopmanschilderwerken
           </h2>
           <div className="flex justify-center items-center py-12">
@@ -187,7 +189,7 @@ const InstagramCarousel = ({
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-3">
-            <Instagram className="h-6 w-6" />
+            <img src={instagramLogo} alt="Instagram" className="h-8 w-auto" />
             Koopmanschilderwerken
           </h2>
           <div className="flex flex-col items-center justify-center py-12 text-slate-500">
@@ -206,7 +208,7 @@ const InstagramCarousel = ({
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-3">
-          <Instagram className="h-6 w-6" />
+          <img src={instagramLogo} alt="Instagram" className="h-8 w-auto" />
           Koopmanschilderwerken
         </h2>
 
@@ -258,11 +260,20 @@ const InstagramCarousel = ({
                 year: 'numeric',
               });
 
-              // Bereken de afstand van de centrale slide
-              const distance = Math.abs(index - currentIndex);
+              // Bereken de afstand van de centrale slide (met loop support)
+              const directDistance = index - currentIndex;
+              const wrapDistance = directDistance > 0 
+                ? directDistance - posts.length 
+                : directDistance + posts.length;
+              const distance = Math.min(Math.abs(directDistance), Math.abs(wrapDistance));
+              
+              // Bepaal of het links of rechts is (kortste pad)
+              const useWrap = Math.abs(wrapDistance) < Math.abs(directDistance);
+              const effectiveDistance = useWrap ? wrapDistance : directDistance;
+              
               const isCenter = index === currentIndex;
-              const isLeft = index < currentIndex;
-              const isRight = index > currentIndex;
+              const isLeft = effectiveDistance < 0;
+              const isRight = effectiveDistance > 0;
 
               // 3D transform berekeningen
               let rotateY = 0;
@@ -320,7 +331,7 @@ const InstagramCarousel = ({
                   onClick={(e) => {
                     // Voorkom klikken tijdens/na swipe
                     if (!isSwiping.current) {
-                      handleImageClick(index);
+                      handleImageClick(post.permalink);
                     }
                   }}
                   className="absolute cursor-pointer"
