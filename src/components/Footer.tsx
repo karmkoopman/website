@@ -58,28 +58,31 @@ const Footer = () => {
             </div>
           </div>
           
-          <div className="border-t border-primary-foreground/20 mt-2 pt-2 text-center">
+          <div className="border-t border-primary-foreground/20 mt-4 pt-4 text-center">
             {/* KVK/BTW text */}
-            <p className="text-[9px] opacity-80 mb-1">
+            <p className="text-xs opacity-90 mb-3">
               KVK : 97982644 &nbsp; &nbsp; BTW-Nr. : NL001234567B01
             </p>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-2">
-            <p className="text-[6px] opacity-75">
-                © {new Date().getFullYear()} Koopman Schilderwerken en{' '}
-                <a
-                  href="https://va-bizzybee.nl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline opacity-90 hover:opacity-100"
-                >
-                  Va-BizzyBee
-                </a>
-                . Alle rechten voorbehouden.
-            </p>
-              <a href="/sitemap" className="text-[7px] underline opacity-80 hover:opacity-100">
-                Sitemap
+            <p className="text-sm font-medium mb-2">
+              © {new Date().getFullYear()} <a
+                href="https://koopmanschilderwerken.nl"
+                className="underline hover:opacity-80 transition-opacity"
+              >
+                Koopman Schilderwerken
+              </a> en naar ontwerp van{' '}
+              <a
+                href="https://va-bizzybee.nl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:opacity-80 transition-opacity"
+              >
+                Va-BizzyBee
               </a>
-            </div>
+              . Alle rechten voorbehouden.
+            </p>
+            <a href="/sitemap" className="text-xs underline opacity-90 hover:opacity-100 transition-opacity">
+              Sitemap
+            </a>
           </div>
         </div>
       </div>
