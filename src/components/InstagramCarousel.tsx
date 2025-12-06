@@ -172,9 +172,8 @@ const InstagramCarousel = ({
     return (
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-3">
-            <img src={instagramLogo} alt="Instagram" className="h-8 w-auto" />
-            Koopmanschilderwerken
+          <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center">
+            <img src={instagramLogo} alt="Instagram" className="h-[72px] w-auto" />
           </h2>
           <div className="flex justify-center items-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
@@ -188,9 +187,8 @@ const InstagramCarousel = ({
     return (
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-3">
-            <img src={instagramLogo} alt="Instagram" className="h-8 w-auto" />
-            Koopmanschilderwerken
+          <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center">
+            <img src={instagramLogo} alt="Instagram" className="h-[72px] w-auto" />
           </h2>
           <div className="flex flex-col items-center justify-center py-12 text-slate-500">
             <Instagram className="h-16 w-16 mb-4" />
@@ -207,9 +205,8 @@ const InstagramCarousel = ({
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center gap-3">
-          <img src={instagramLogo} alt="Instagram" className="h-8 w-auto" />
-          Koopmanschilderwerken
+        <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center">
+          <img src={instagramLogo} alt="Instagram" className="h-[88px] w-auto" />
         </h2>
 
         <div 
@@ -297,7 +294,7 @@ const InstagramCarousel = ({
                 rotateY = isLeft ? 35 : -35;
                 translateZ = -100;
                 translateX = isLeft ? -180 : 180;
-                opacity = 0.85;
+                opacity = 0.95;
                 zIndex = 5;
               } else if (distance === 2) {
                 // Tweede buren: meer verkleind en geroteerd
@@ -305,7 +302,7 @@ const InstagramCarousel = ({
                 rotateY = isLeft ? 50 : -50;
                 translateZ = -200;
                 translateX = isLeft ? -320 : 320;
-                opacity = 0.7;
+                opacity = 0.85;
                 zIndex = 3;
               } else if (distance === 3) {
                 // Derde buren: nog kleiner
@@ -313,7 +310,7 @@ const InstagramCarousel = ({
                 rotateY = isLeft ? 60 : -60;
                 translateZ = -300;
                 translateX = isLeft ? -420 : 420;
-                opacity = 0.6;
+                opacity = 0.75;
                 zIndex = 2;
               } else {
                 // Verder weg: nog kleiner
@@ -321,7 +318,7 @@ const InstagramCarousel = ({
                 rotateY = isLeft ? 70 : -70;
                 translateZ = -400;
                 translateX = isLeft ? -500 : 500;
-                opacity = 0.4;
+                opacity = 0.65;
                 zIndex = 1;
               }
 
