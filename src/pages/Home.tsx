@@ -31,12 +31,17 @@ import googleReviewLogo from '@/assets/Google-Review-Logo.png';
 import sigmaLogo from '@/assets/sigma_logo_habeco_leverancier.png';
 import renovaidLogo from '@/assets/renovaid-logo.png';
 import veveoLogo from '@/assets/veveo_logo_habeco_leverancier.png';
+import referentie1 from '@/assets/Referentie 1.jpg';
+import referentie2 from '@/assets/Refentie 2.jpg';
+import referentie3 from '@/assets/Referentie 3.jpg';
+import referentie4 from '@/assets/Referentie 4.jpg';
 
 const Home = () => {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [visibleProjects, setVisibleProjects] = useState<boolean[]>([]);
   const carouselRef = useRef<HTMLDivElement | null>(null);
+  const reviewsCarouselRef = useRef<HTMLDivElement | null>(null);
 
   // Gebruik dezelfde projectdata als op de projectenpagina
   const projects = projectsData;
@@ -52,6 +57,16 @@ const Home = () => {
     if (!carouselRef.current) return;
     const container = carouselRef.current;
     const scrollAmount = container.clientWidth * 0.9;
+    container.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth',
+    });
+  };
+
+  const scrollReviewsCarousel = (direction: 'left' | 'right') => {
+    if (!reviewsCarouselRef.current) return;
+    const container = reviewsCarouselRef.current;
+    const scrollAmount = container.clientWidth * 0.8;
     container.scrollBy({
       left: direction === 'left' ? -scrollAmount : scrollAmount,
       behavior: 'smooth',
@@ -202,14 +217,57 @@ const Home = () => {
       </div>
     </section>
 
-      {/* Google Reviews Logo */}
-      <section className="bg-white pb-4 md:pb-4 pt-6 md:pt-8">
-      <div className="container mx-auto px-4 md:px-6 flex justify-center">
-        <a href="https://www.google.com/maps/search/Koopman+Schilderwerken+Hengelo/@52.2658,6.7933,15z/data=!4m2!2m1!4b1?entry=ttu&hl=nl#reviews" target="_blank" rel="noreferrer" className="inline-block hover:opacity-80 transition-opacity">
-          <img src={googleReviewLogo} alt="Bekijk onze Google reviews" className="h-16 md:h-20 w-auto" />
-        </a>
-      </div>
-    </section>
+      {/* Google Reviews */}
+      <section className="bg-white pb-8 md:pb-12 pt-6 md:pt-8">
+        <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+          <h2 className="text-3xl font-bold text-center mb-8 md:mb-12">Google Reviews</h2>
+          
+          {/* Desktop: Grid */}
+          <div className="hidden md:grid md:grid-cols-4 gap-3 md:gap-4">
+            <img 
+              src={referentie1} 
+              alt="Review 1" 
+              className="w-full h-auto object-contain rounded-lg shadow-sm"
+            />
+            <img 
+              src={referentie2} 
+              alt="Review 2" 
+              className="w-full h-auto object-contain rounded-lg shadow-sm"
+            />
+            <img 
+              src={referentie3} 
+              alt="Review 3" 
+              className="w-full h-auto object-contain rounded-lg shadow-sm"
+            />
+            <img 
+              src={referentie4} 
+              alt="Review 4" 
+              className="w-full h-auto object-contain rounded-lg shadow-sm"
+            />
+          </div>
+
+          {/* Mobile: Slider */}
+          <div className="relative md:hidden">
+            <div
+              ref={reviewsCarouselRef}
+              className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4"
+            >
+              {[referentie1, referentie2, referentie3, referentie4].map((review, index) => (
+                <div
+                  key={index}
+                  className="snap-start min-w-[280px] flex-shrink-0"
+                >
+                  <img 
+                    src={review} 
+                    alt={`Review ${index + 1}`} 
+                    className="w-full h-auto object-contain rounded-lg shadow-sm"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Over ons */}
       <section id="over-ons" className="bg-slate-50 pt-8 md:pt-12 pb-12 md:pb-20">
