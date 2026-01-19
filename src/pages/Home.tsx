@@ -31,17 +31,12 @@ import googleReviewLogo from '@/assets/Google-Review-Logo.png';
 import sigmaLogo from '@/assets/sigma_logo_habeco_leverancier.png';
 import renovaidLogo from '@/assets/renovaid-logo.png';
 import veveoLogo from '@/assets/veveo_logo_habeco_leverancier.png';
-import referentie1 from '@/assets/Referentie 1.jpg';
-import referentie2 from '@/assets/Refentie 2.jpg';
-import referentie3 from '@/assets/Referentie 3.jpg';
-import referentie4 from '@/assets/Referentie 4.jpg';
 
 const Home = () => {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [visibleProjects, setVisibleProjects] = useState<boolean[]>([]);
   const carouselRef = useRef<HTMLDivElement | null>(null);
-  const reviewsCarouselRef = useRef<HTMLDivElement | null>(null);
 
   // Gebruik dezelfde projectdata als op de projectenpagina
   const projects = projectsData;
@@ -63,15 +58,6 @@ const Home = () => {
     });
   };
 
-  const scrollReviewsCarousel = (direction: 'left' | 'right') => {
-    if (!reviewsCarouselRef.current) return;
-    const container = reviewsCarouselRef.current;
-    const scrollAmount = container.clientWidth * 0.8;
-    container.scrollBy({
-      left: direction === 'left' ? -scrollAmount : scrollAmount,
-      behavior: 'smooth',
-    });
-  };
 
   // Initialize projects as hidden
   useEffect(() => {
@@ -219,51 +205,23 @@ const Home = () => {
 
       {/* Google Reviews */}
       <section className="bg-white pb-8 md:pb-12 pt-6 md:pt-8">
-        <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-          <h2 className="text-3xl font-bold text-center mb-8 md:mb-12">Google Reviews</h2>
-          
-          {/* Desktop: Grid */}
-          <div className="hidden md:grid md:grid-cols-4 gap-3 md:gap-4">
-            <img 
-              src={referentie1} 
-              alt="Review 1" 
-              className="w-full h-auto object-contain rounded-lg shadow-sm"
-            />
-            <img 
-              src={referentie2} 
-              alt="Review 2" 
-              className="w-full h-auto object-contain rounded-lg shadow-sm"
-            />
-            <img 
-              src={referentie3} 
-              alt="Review 3" 
-              className="w-full h-auto object-contain rounded-lg shadow-sm"
-            />
-            <img 
-              src={referentie4} 
-              alt="Review 4" 
-              className="w-full h-auto object-contain rounded-lg shadow-sm"
-            />
-          </div>
-
-          {/* Mobile: Slider */}
-          <div className="relative md:hidden">
-            <div
-              ref={reviewsCarouselRef}
-              className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4"
-            >
-              {[referentie1, referentie2, referentie3, referentie4].map((review, index) => (
-                <div
-                  key={index}
-                  className="snap-start min-w-[280px] flex-shrink-0"
-                >
-                  <img 
-                    src={review} 
-                    alt={`Review ${index + 1}`} 
-                    className="w-full h-auto object-contain rounded-lg shadow-sm"
-                  />
-                </div>
-              ))}
+        <div className="container mx-auto px-4 md:px-6 max-w-4xl">
+          <div className="text-center space-y-6 md:space-y-8">
+            <h2 className="text-3xl font-bold">Google Reviews</h2>
+            <div className="flex flex-col items-center gap-6">
+              <img 
+                src={googleReviewLogo} 
+                alt="Google Reviews" 
+                className="h-16 md:h-20 w-auto object-contain"
+              />
+              <a 
+                href="https://www.google.com/maps/place/Koopman+Schilderwerken/@52.2543607,6.7734153,17z/data=!4m8!3m7!1s0xa8e735070f83548b:0x780d2596c172e052!8m2!3d52.2543574!4d6.7759902!9m1!1b1!16s%2Fg%2F11yhj37rym?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-full bg-[#91e5ff] text-slate-900 font-semibold px-6 py-3 text-base hover:bg-[#7fdcff] transition-colors"
+              >
+                Bekijk onze reviews op Google
+              </a>
             </div>
           </div>
         </div>
