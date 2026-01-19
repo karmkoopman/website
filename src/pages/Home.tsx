@@ -58,6 +58,7 @@ const Home = () => {
     });
   };
 
+
   // Initialize projects as hidden
   useEffect(() => {
     setVisibleProjects(new Array(projects.length).fill(false));
@@ -202,14 +203,29 @@ const Home = () => {
       </div>
     </section>
 
-      {/* Google Reviews Logo */}
-      <section className="bg-white pb-4 md:pb-4 pt-6 md:pt-8">
-      <div className="container mx-auto px-4 md:px-6 flex justify-center">
-        <a href="https://www.google.com/maps/search/Koopman+Schilderwerken+Hengelo/@52.2658,6.7933,15z/data=!4m2!2m1!4b1?entry=ttu&hl=nl#reviews" target="_blank" rel="noreferrer" className="inline-block hover:opacity-80 transition-opacity">
-          <img src={googleReviewLogo} alt="Bekijk onze Google reviews" className="h-16 md:h-20 w-auto" />
-        </a>
-      </div>
-    </section>
+      {/* Google Reviews */}
+      <section className="bg-white pb-8 md:pb-12 pt-6 md:pt-8">
+        <div className="container mx-auto px-4 md:px-6 max-w-4xl">
+          <div className="text-center space-y-6 md:space-y-8">
+            <h2 className="text-3xl font-bold">Google Reviews</h2>
+            <div className="flex flex-col items-center gap-6">
+              <img 
+                src={googleReviewLogo} 
+                alt="Google Reviews" 
+                className="h-16 md:h-20 w-auto object-contain"
+              />
+              <a 
+                href="https://www.google.com/maps/place/Koopman+Schilderwerken/@52.2543607,6.7734153,17z/data=!4m8!3m7!1s0xa8e735070f83548b:0x780d2596c172e052!8m2!3d52.2543574!4d6.7759902!9m1!1b1!16s%2Fg%2F11yhj37rym?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-full bg-[#91e5ff] text-slate-900 font-semibold px-6 py-3 text-base hover:bg-[#7fdcff] transition-colors"
+              >
+                Bekijk onze reviews op Google
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Over ons */}
       <section id="over-ons" className="bg-slate-50 pt-8 md:pt-12 pb-12 md:pb-20">
