@@ -148,9 +148,36 @@ const InstagramCarousel = ({ title = "Volg ons op Instagram" }: InstagramCarouse
                 slideShadows: true,
               }}
               breakpoints={{
-                320: { spaceBetween: 18 },
-                768: { spaceBetween: 24 },
-                1024: { spaceBetween: 30 },
+                320: { 
+                  spaceBetween: 12,
+                  coverflowEffect: {
+                    rotate: 30,
+                    stretch: 0,
+                    depth: 150,
+                    modifier: 1.2,
+                    slideShadows: true,
+                  }
+                },
+                768: { 
+                  spaceBetween: 20,
+                  coverflowEffect: {
+                    rotate: 40,
+                    stretch: 0,
+                    depth: 180,
+                    modifier: 1.4,
+                    slideShadows: true,
+                  }
+                },
+                1024: { 
+                  spaceBetween: 30,
+                  coverflowEffect: {
+                    rotate: 45,
+                    stretch: 0,
+                    depth: 200,
+                    modifier: 1.6,
+                    slideShadows: true,
+                  }
+                },
               }}
               pagination={{ clickable: true }}
               modules={[EffectCoverflow, Pagination]}
@@ -240,52 +267,54 @@ const InstagramCarousel = ({ title = "Volg ons op Instagram" }: InstagramCarouse
       position: relative;
     }
 
-    /* Slide zonder zichtbare kaart-rand */
+    /* Slide met duidelijke kaart-rand */
     .swiper-slide-instagram {
       width: 400px !important;
       height: 500px;
       border-radius: 16px;
-      overflow: hidden;
+      overflow: visible;
       position: relative;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: transparent;
-      box-shadow: none;
+      background: #ffffff;
+      border: 2px solid #e5e7eb;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      padding: 12px;
     }
 
     @media (max-width: 768px) {
       .swiper-slide-instagram {
-        width: 300px !important;
-        height: 375px; /* 4:5 verhouding zoals Instagram posts */
+        width: 280px !important;
+        height: 350px; /* 4:5 verhouding zoals Instagram posts */
+        padding: 8px;
       }
     }
 
-    /* Media (img/video): volledig zichtbaar, geen randkleur */
+    /* Media (img/video): binnen de kaart met padding - allemaal hetzelfde formaat */
     .swiper-slide-instagram .media {
-      position: absolute;
-      inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       object-position: center;
       display: block;
-      background: transparent;
+      background: #ffffff;
+      border-radius: 8px;
     }
 
-    /* Coverflow shadows iets subtieler */
+    /* Coverflow shadows passend bij kaart-stijl */
     .swiper-container-3d .swiper-slide-shadow-left,
     .swiper-container-3d .swiper-slide-shadow-right {
       border-radius: 16px;
     }
 
     .swiper-container-3d .swiper-slide-shadow-left {
-      background-image: linear-gradient(to left, rgba(0,0,0,0.18), transparent);
+      background-image: linear-gradient(to left, rgba(0,0,0,0.15), transparent);
     }
 
     .swiper-container-3d .swiper-slide-shadow-right {
-      background-image: linear-gradient(to right, rgba(0,0,0,0.18), transparent);
+      background-image: linear-gradient(to right, rgba(0,0,0,0.15), transparent);
     }
 
     .swiper-pagination {
