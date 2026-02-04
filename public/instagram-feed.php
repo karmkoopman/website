@@ -25,7 +25,8 @@ if (file_exists($cache_file)) {
 // Instagram Graph API configuration
 // Replace these with your actual credentials
 $instagram_business_account_id = getenv('INSTAGRAM_ACCOUNT_ID') ?: '17841477979204687';
-$access_token = getenv('INSTAGRAM_ACCESS_TOKEN') ?: 'IGAAUHyyHF8n5BZAFR2bDNlbDBiQmxBWGx2MkZAFMHdJMVFQRkdJN3JCRHBjLUt1TnZAYQ3hVRkgwNzBmRk5qOFBkckZAqTkY5dTFsLVA2QnF5Tlg0UkNSZAy1NLWdrZAjNhVGhtR1pTajdqOU9HUHg2dHFHN0R6SnJ4UWxiTFQyTzEwawZDZD';
+$access_token = getenv('INSTAGRAM_ACCESS_TOKEN') ?: 'IGAAUHyyHF8n5BZAFpPckgxak9FSzE4SXg2ZA2taSndGa1J4ZA3c0emNzOUJDdnNOUmhNN2otaTJ6UFl2WTVvaENTdUpRVFZA1NEtsdHJvMndieGN2dk9WQWtNTFdTN2VmTjJQUXNEdnFpbFROSkZAsQVdPRF9Ddks1eW1icVcyTE1nTQZDZD
+';
 
 // Fields to retrieve from Instagram posts
 $fields = 'id,caption,media_type,media_url,permalink,thumbnail_url,timestamp,username';
