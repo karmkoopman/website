@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Instagram } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination } from "swiper/modules";
+import { EffectCoverflow } from "swiper/modules";
 
 import type { Swiper as SwiperType } from "swiper";
 import instagramLogo from "@/assets/Instagram-Logo.png";
@@ -85,9 +85,7 @@ const InstagramCarousel = ({ title = "Volg ons op Instagram" }: InstagramCarouse
     return (
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center">
-            <img src={instagramLogo} alt="Instagram" className="h-[72px] w-auto" />
-          </h2>
+          <h2 className="text-3xl font-bold text-center mb-12">{title}</h2>
 
           <div className="flex justify-center items-center py-12">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
@@ -101,9 +99,7 @@ const InstagramCarousel = ({ title = "Volg ons op Instagram" }: InstagramCarouse
     return (
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center">
-            <img src={instagramLogo} alt="Instagram" className="h-[72px] w-auto" />
-          </h2>
+          <h2 className="text-3xl font-bold text-center mb-12">{title}</h2>
           <div className="flex flex-col items-center justify-center py-12 text-slate-500">
             <Instagram className="h-16 w-16 mb-4" />
             <p>{error || "Geen Instagram posts beschikbaar"}</p>
@@ -116,9 +112,7 @@ const InstagramCarousel = ({ title = "Volg ons op Instagram" }: InstagramCarouse
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12 flex items-center justify-center">
-          <img src={instagramLogo} alt="Instagram" className="h-[72px] w-auto" />
-        </h2>
+        <h2 className="text-3xl font-bold text-center mb-12">{title}</h2>
 
         <div className="swiper-container">
           {swiperError && (
@@ -179,8 +173,7 @@ const InstagramCarousel = ({ title = "Volg ons op Instagram" }: InstagramCarouse
                   }
                 },
               }}
-              pagination={{ clickable: true }}
-              modules={[EffectCoverflow, Pagination]}
+              modules={[EffectCoverflow]}
               className="swiper-instagram"
             >
               {posts.map((post) => {
@@ -226,7 +219,31 @@ const InstagramCarousel = ({ title = "Volg ons op Instagram" }: InstagramCarouse
                       />
                     )}
 
-                    {/* optioneel: logo of info hier weglaten zodat alleen de foto zichtbaar is */}
+                    {/* klein Instagram-logo overlay op elke slide (uit assets-map) */}
+                    <div className="instagram-badge">
+                      <img
+                        src={instagramLogo}
+                        alt="Instagram"
+                        className="instagram-badge-image"
+                      />
+                    </div>
+
+                    {/* onderschrift / tekst onder in de afbeelding: profiel + datum + caption */}
+                    {(post.caption || post.username || post.timestamp) && (
+                      <div className="instagram-caption">
+                        <div className="instagram-caption-meta">
+                          <span className="instagram-caption-username">
+                            @{post.username}
+                          </span>
+                          <span className="instagram-caption-date">
+                            {formattedDate}
+                          </span>
+                        </div>
+                        {post.caption && (
+                          <p>{truncateCaption(post.caption, 80)}</p>
+                        )}
+                      </div>
+                    )}
                   </SwiperSlide>
                 );
               })}
@@ -272,35 +289,81 @@ const InstagramCarousel = ({ title = "Volg ons op Instagram" }: InstagramCarouse
       width: 400px !important;
       height: 500px;
       border-radius: 16px;
-      overflow: visible;
+      overflow: hidden;
       position: relative;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #ffffff;
-      border: 2px solid #e5e7eb;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      padding: 12px;
     }
 
     @media (max-width: 768px) {
       .swiper-slide-instagram {
         width: 280px !important;
         height: 350px; /* 4:5 verhouding zoals Instagram posts */
-        padding: 8px;
       }
     }
 
-    /* Media (img/video): binnen de kaart met padding - allemaal hetzelfde formaat */
+    /* Media (img/video): vult de kaart volledig */
     .swiper-slide-instagram .media {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center;
       display: block;
-      background: #ffffff;
-      border-radius: 8px;
+      border-radius: 16px;
+    }
+
+    /* klein Instagram-logo bovenin, gecentreerd op elke slide */
+    .instagram-badge {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .instagram-badge-image {
+      height: 45px;
+      width: 45px;
+      object-fit: contain;
+    }
+
+    /* caption onderin de afbeelding */
+    .instagram-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 10px 14px 12px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+      color: #ffffff;
+      line-height: 1.2;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .instagram-caption p {
+      margin: 0;
+      font-size: 0.8rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+
+    .instagram-caption-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      opacity: 0.9;
+    }
+
+    .instagram-caption-username {
+      font-weight: 600;
     }
 
     /* Coverflow shadows passend bij kaart-stijl */
@@ -317,22 +380,6 @@ const InstagramCarousel = ({ title = "Volg ons op Instagram" }: InstagramCarouse
       background-image: linear-gradient(to right, rgba(0,0,0,0.15), transparent);
     }
 
-    .swiper-pagination {
-      position: relative !important;
-      margin-top: 30px;
-      bottom: auto !important;
-    }
-
-    .swiper-pagination-bullet {
-      background: #696969;
-      transition: all 0.5s ease 0s;
-      border-radius: 8px;
-    }
-
-    .swiper-pagination-bullet-active {
-      background: #ffc107;
-      width: 30px;
-    }
   `}</style>
     </section>
   );
